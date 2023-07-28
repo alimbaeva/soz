@@ -1,0 +1,140 @@
+@import '../../variables.scss';
+
+.topscreen {
+  &__wrapper {
+    width: 82%;
+    margin: 7rem 0px 9.6rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__inner {
+    width: 75%;
+  }
+
+
+  &__title {
+    font-family: Mulish;
+    font-size: 4.75rem;
+    font-style: normal;
+    font-weight: 800;
+    text-align: center;
+  }
+
+  .first-word {
+    padding: 0px 2.44rem .18rem 2.37rem;
+    border-radius: 1.25rem;
+    background: #AF9FFF;
+  }
+
+  .last-word {
+    color: #000000;
+    padding: 0px .56rem .18rem .56rem;
+    border-radius: 1.25rem;
+    background: #EFFF9F;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .white-btn {
+    @extend %light-button;
+  }
+
+  .banner-btn {
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    padding: .81rem 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    background-color: inherit;
+    border-radius: 3.12rem;
+  }
+
+  .play-icon {
+    margin-right: .3rem;
+  }
+
+  .custom-button-group {
+    flex-direction: column;
+    height: 10.3rem;
+    margin: 0px;
+    // position: absolute;
+    // top: 20px;
+    // transform: translate(1230px, 0px);
+  }
+}
+
+@media screen and (max-width: 1260px) {
+  .topscreen {
+    // &__inner {
+    //   width: 62%;
+    //   margin: 112px auto 202px auto;
+    // }
+  
+    // &__description {
+    //   font-family: 'Syne', sans-serif;
+    //   font-size: 18px;
+    //   font-weight: 400;
+    //   text-align: center;
+    // }
+  
+    &__title {
+      font-size: 3.75rem;
+      line-height: 5.6rem;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topscreen {
+     
+    &__description {
+      font-size: 1rem;
+    }
+  
+    &__title {
+      font-size: 2.375rem;
+      line-height: 5.6rem;
+    }
+
+    .play-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-right: .3rem;
+    }
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .topscreen {
+    &__title {
+      // font-size: 2.375rem;
+      line-height: 5rem;
+    }
+
+    .first-word {
+      padding: 0px 1.81rem .18rem 1.57rem;
+      border-radius: .75rem;
+      background: #AF9FFF;
+    }
+  
+    .last-word {
+      color: #000000;
+      padding: 0px .56rem .18rem .56rem;
+      border-radius: .75rem;
+      background: #EFFF9F;
+    }
+  
+
+    .btn-group {
+      flex-direction: column;
+    }
+  }
+}

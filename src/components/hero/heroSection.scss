@@ -1,0 +1,54 @@
+@import '../../variables.scss';
+.hero {
+  &__inner {
+    width: 68%;
+    margin: 4.5rem auto;
+    text-align: center;
+  }
+
+  &__title {
+    font-family: Mulish;
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #EDB623;
+  }
+
+  &__text {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 1.125rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero {
+    &__title {
+      font-family: Mulish;
+      font-size: 2.25rem;
+    }
+  
+    &__text {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .hero {
+    &__inner {
+      width: 68%;
+      margin: 72px auto;
+      text-align: center;
+    }
+
+    &__title {
+      font-family: Mulish;
+      font-size: 2rem;
+    }
+  
+    &__text {
+      width: 90%;
+      font-size: 1rem;
+    }
+  }
+}

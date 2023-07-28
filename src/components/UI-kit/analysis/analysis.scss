@@ -1,0 +1,15 @@
+@import '../../../variables.scss';
+
+.card__analysis {
+    display: flex;
+
+    img {
+        margin-right: .25rem;
+    }
+
+    div {
+        @extend %flexAlignCenter !optional;
+        margin-right: .5rem;
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,17 @@
+@import '../../../variables.scss';
+
+.social_network {
+    @extend %flexSpBet;
+    max-width: 10.3rem;
+    margin: 2.2rem auto;
+
+    button {
+        background-color: inherit;
+        border: none;
+        padding: 0;
+        height: 1.9rem;
+        border-radius: 1.25rem;
+    }
+}
+
+

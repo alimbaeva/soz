@@ -1,0 +1,80 @@
+@import '../../variables.scss';
+
+.card__word {
+    @extend %flexAlignCenter;
+    margin-bottom: 1.37rem;
+    padding: 1.37rem;
+    border-radius: .75rem;
+
+    .img {
+        width: 4.37rem;
+        height: 4.37rem;
+        margin-right: 1.37rem;
+        border-radius: 100%;
+        overflow: hidden;
+
+        img {
+            width: 4.37rem;
+        }
+    }
+
+    h5 {
+        @extend %titleCard;
+        color: $black;
+        display: inline;        
+    }
+
+    h5~span {
+        @extend %saptext;
+        font-size: .8rem;
+        color: $gray;
+    }
+
+    p {
+        @extend %titleCard;
+        color: $black;
+        max-width: 40rem;
+        margin: .5rem 0;
+        font-size: 1.12rem;
+        font-weight: 400;
+    }
+
+    .card_btns {
+        @extend %flexSpBet;
+        width: 14.4rem;
+
+        button {
+            @extend %saptext;
+            font-size: .8rem;
+            color: $gray;
+            background-color: inherit;
+            border: none;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .card__word {
+        display: block;
+
+        .img {
+            margin-bottom: .6rem;
+        }
+        h5 {
+            font-size: 1.12rem;
+        }
+        h5~span {
+            font-size: .6rem;
+        }
+        p {
+            font-size: 1rem;
+        }
+        .card_btns {
+            display: block;
+
+            button {
+                margin-bottom: .37rem;
+            }
+        }
+    }
+}

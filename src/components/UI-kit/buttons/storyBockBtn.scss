@@ -1,0 +1,114 @@
+.set__story {
+    width: 22.5rem;
+    height: 11.87rem;
+    position: relative;
+
+    .button {
+        border-radius: 1.25rem;
+        position: absolute;
+        top: 10%;
+        left: -7%;
+        transform: rotate(-8deg);
+    }
+
+    button {
+        @extend %saptext !optional;
+        width: 13.3rem;
+        height: 4rem;
+        background: inherit;
+        border-radius: 1.25rem;
+    }
+
+    .starYello {
+        position: absolute;
+        left: 55%;
+        bottom: 0;
+    }
+
+    .starBlue {
+        position: absolute;
+        left: 5%;
+        bottom: 3%;
+    }
+
+    .msg2 {
+        position: absolute;
+        right: 0;
+        bottom: 7%;
+    }
+
+    .setLine {
+        position: absolute;
+        right: 13%;
+        top: 2%;
+    }
+
+    .circle {
+        position: absolute;
+        right: 35%;
+        top: 42%;
+    }
+}
+
+@media (max-width: 1130px) {
+    .set__story {
+        .setLine {
+            top: -20%;
+            left: 40%;
+            transform: rotate(-80deg);
+        }
+    }
+}
+
+@media (max-width: 945px) {
+    .set__story {
+        .setLine {
+            top: -20%;
+            left: 40%;
+            transform: rotate(-80deg);
+        }
+    }
+}
+
+@media (max-width: 775px) {
+    .set__story {
+        margin: 0 auto;
+
+        .setLine {
+            left: 67%;
+            top: -20%;
+            transform: rotate(0deg);
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .set__story {
+        width: 19.4rem;
+        button {
+            width: 11.6rem !important;
+            height: 3.4rem !important;
+        }
+
+        .button {
+            left: 0%;
+        }
+
+        .starYello {
+            left: 50%;
+        }
+        
+        .msg2 {
+            right: 11%;
+        }
+    
+        .setLine {
+            left: 60%;
+            top: -18%;
+        }
+    
+        .circle {
+            right: 35%;
+        }
+    }
+}
