@@ -1,0 +1,29 @@
+@import '../../variables.scss';
+
+.post-publish {
+  h2 {
+    @extend %titleCard;
+    font-size: 3.5rem;
+    margin-bottom: 0px;
+  }
+  
+  &__descr {
+    width: 50%;
+    @extend %titleCard;
+    font-size: 1.125rem;
+    font-weight: 400;
+    margin: 5px 0 40px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .post-publish {
+    h2 {
+      font-size: 2.25rem;
+    }
+    
+    &__descr {
+      font-size: 1.125rem;
+    }
+  }
+}
