@@ -1,0 +1,117 @@
+
+$gray: #676767;
+$black: #000;
+$white: #FFF;
+
+%text {
+    font-style: normal;
+    line-height: 130%;
+}
+
+%titleCard {
+    @extend %text !optional;
+    font-family: 'Mulish', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+%saptext {
+    @extend %text !optional;
+    font-family: 'Source Sans Pro';
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+%flexAlignCenter {
+    display: flex;
+    align-items: center;
+}
+
+%flexCenter {
+    @extend %flexAlignCenter;
+    justify-content: center;
+}
+
+%flexSpBet {
+    @extend %flexAlignCenter;
+    justify-content: space-between;
+}
+
+%light-button {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  padding: 1.06rem 2.25rem;
+  border-radius: 3.12rem;
+}
+
+// %transparent-button {
+//   color: #FFF;
+//   font-family: 'Inter', sans-serif;
+//   font-size: 1.25rem;
+//   font-style: normal;
+//   font-weight: 400;
+//   line-height: normal;
+//   padding: 13px 28px;
+//   border-radius: 50px;
+//   border: 2px solid #FFF;
+//   text-decoration: none;
+//   cursor: pointer;
+// }
+
+@media screen and (max-width: 768px) {
+  %light-button {
+    font-size: 1rem;
+    padding: .6rem 1.25rem;
+  }
+  
+  %transparent-button {
+    font-size: 1rem;
+    padding: .6rem .93rem;
+  }
+}
+
+.section-description {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .section-description {
+    font-size: 1rem;
+  }
+}
+
+.submit-button {
+  width: 100%;
+  @extend %titleCard;
+  font-weight: 700;
+  padding: 16px 0;
+  border-radius: 12px;
+  background-color:#E9EBEE;
+  border-style: none;
+}
+
+.question,
+.confidentional {
+  @extend %titleCard;
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.confidentional {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.question-link {
+  color: #FFD36F;
+}
+
+// font-family: 'Inter', sans-serif;
+// font-family: 'Mulish', sans-serif;
+// font-family: 'Syne', sans-serif;

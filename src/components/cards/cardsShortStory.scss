@@ -1,0 +1,103 @@
+@import '../../variables.scss';
+
+.card {
+    width: 19.4rem;
+    height: 24.4rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    border-radius: 1.25rem;
+
+    h4 {
+        @extend %titleCard !optional;
+        color: $black;
+    }
+
+    p {
+        @extend %saptext;
+        color: $black;
+    }
+
+    img {
+        margin-right: .25rem;
+    }
+
+    &__footer {
+        @extend %flexAlignCenter !optional;
+        position: absolute;
+        bottom: 0;
+
+        p {
+            font-weight: 600;
+            color: $black;
+
+            span {
+                margin-left: .37rem;
+            }
+        }
+    }
+}
+
+.card:nth-child(2) {
+    position: relative;
+    top: 12.5rem;
+}
+
+.card:nth-child(5) {
+    position: relative;
+    top: 12.5rem;
+}
+
+@media (max-width: 1130px) {
+    
+    .card:nth-child(2) {
+        position: static;
+    }
+
+    .card:nth-child(5) {
+        position: static;
+    }
+
+    .card:nth-child(2n) {
+        position: relative;
+        top: 14.4rem;
+    }
+}
+
+@media (max-width: 775px) {
+    .card {
+        width: 17.5rem;
+    
+        h4 {
+            font-size: 1.12rem;
+        }
+    
+        p {
+            font-size: 1rem;
+        }
+    }
+
+    .card:nth-child(2n) {
+        top: 6.25rem;
+    }
+}
+
+@media (max-width: 710px) {
+    .card {
+        width: 80%;
+        min-height: 18.75rem;
+        margin: 1.25rem auto;
+        display: flex;
+        flex-wrap: wrap-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        &__footer {
+            position: static;
+        }
+    }
+
+    .card:nth-child(2n) {
+        position: static;
+    }
+}

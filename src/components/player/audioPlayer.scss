@@ -1,0 +1,217 @@
+.audioPlayer {
+    margin-bottom: .5rem;
+    display: flex;
+    width: 98%;
+    align-items: center;
+    position: relative;
+
+    button {
+        background: none;
+        border-radius: 50px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.forwardBackward {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    margin: 0 .3rem;
+    font-size: 1rem;
+
+}
+
+.playPause {
+    width: 4.4rem;
+    height: 4.4rem;
+
+    img {
+        width: 3.8rem;
+        height: 3.8rem;
+    }
+}
+
+// .duration,
+// .curentTime {
+//     font-size: 1rem;
+// }
+
+.progressBar-block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.title-image {
+    margin-right: 1rem;
+}
+
+.showTime {
+    font-size: 1rem;
+    position: absolute;
+    color: #676767;
+    display: flex;
+    bottom: 0;
+    right: 1%;
+}
+
+.progressBar {
+    --bar-br: #676767;
+    --seek-before-width: .2rem;
+    --seek-before-color: #EFFF9F;
+    --seek-before-colorL: #0a7e89;
+    --knobby: #EFFF9F;
+    --knobbyL: #0a7e89;
+    --selectedKnobby: #5cc2cc;
+
+    appearance: none;
+    background: var(--bar-br);
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    height: .15rem;
+    outline: none;    
+}
+
+// saffari
+.progressBar::-webkit-slider-runnable-track {
+    background: var(--bar-br);
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    height: .15rem;
+    outline: none; 
+}
+
+// firefox
+.progressBar::-moz-range-track {
+    background: var(--bar-br);
+    border-radius: 10px;
+    position: relative;
+    width: 100%;
+    height: .15rem;
+    outline: none; 
+}
+
+.progressBar::-moz-focus-outer {
+    border: 0;
+}
+
+// progress bar for saffari
+
+.progressBar::before {
+    content: '';
+    height: .15rem;
+    width: var(--seek-before-width);
+    background-color: var(--seek-before-color);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+.progressBarColor::before {
+    background-color: var(--seek-before-color);
+}
+.progressBarColorL::before {
+    background-color: var(--seek-before-colorL);
+}
+
+// progress bar for firefox
+
+.progressBar::-moz-range-progress {
+    background-color: var(--seek-before-color);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: .15rem;
+}
+
+// progress bar for hrome saffari
+
+.progressBar::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    margin: -6px 0 0 0;
+    box-sizing: border-box;
+}
+.progressBarColor::-webkit-slider-thumb {
+    background-color: var(--knobby);
+}
+.progressBarColorL::-webkit-slider-thumb {
+    background-color: var(--knobbyL);
+}
+
+// knobby while for chrome
+
+.progressBar:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+    background-color: var(--selectedKnobby);
+}
+
+// knobby while for  firefox
+
+.progressBar::-moz-range-thumb {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    border: transparent;
+    background-color: var(--knobby);
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+    box-sizing: border-box;
+}
+.progressBarColor::-moz-range-thumb {
+    background-color: var(--knobby);
+}
+.progressBarColorL::-moz-range-thumb {
+    background-color: var(--knobbyL);
+}
+
+// knobby while for firefox
+.progressBar:active:-moz-range-thumb {
+    transform: scale(1.2);
+    background-color: var(--selectedKnobby);
+}
+
+@media (max-width: 672px) {
+    .playPause {
+        width: 3.8rem;
+        height: 3.8rem;
+    
+        img {
+            width: 3rem;
+            height: 3rem;
+        }
+    }
+
+    .showTime { 
+        font-size: .7rem;
+    }
+
+    .forwardBackward,
+    .forwardBackward {
+        svg {
+            width: 15px;
+        }
+    }
+}
+@media (max-width: 460px) {
+    .playPause {
+        height: 3rem;
+    }
+
+    .showTime { 
+        bottom: -20%;
+    }
+}

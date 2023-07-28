@@ -1,0 +1,96 @@
+@import '../../variables.scss';
+
+.true__story {
+    position: relative;
+
+    .story__block-btn {
+        position: absolute;
+        left: 50%;
+        top: 5%;
+        transform: translateX(-50%);
+    }
+
+    h1 {
+        @extend %titleCard;
+        font-family: Mulish;
+        font-size: 3.6rem;
+        text-align: center;
+    }
+
+    .cards__block {
+        margin-bottom: 16rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;        
+    }
+
+    button {
+        @extend %saptext !optional;
+        display: block;
+        font-size: 1.25rem;
+        width: 14.9rem;
+        height: 4.3rem;
+        border-radius: 3.1rem;
+        margin: 20% auto 4.5rem;
+        background-color: inherit;
+    }
+}
+
+@media (max-width: 1130px) {
+    .cards__block {
+        justify-content: center;
+        padding: 0 10%;
+    }
+
+    .true__story {
+        .story__block-btn {
+            transform: translateX(20%);
+        }
+        
+        button {
+            margin-top: 25%;
+        }
+    }
+
+}
+
+@media (max-width: 945px) {
+    .cards__block {
+        padding: 0 .5rem;
+    }
+
+    .true__story {
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        .story__block-btn {
+            transform: translateX(3%);
+        }
+
+        button {
+            margin-top: 30%;
+        }
+    }
+}
+
+@media (max-width: 775px) {
+    .true__story {
+        .story__block-btn {
+            position: static;
+            margin-bottom: 2.5rem;
+        }
+
+        button {
+            margin-top: 10%;
+        }
+    }
+}
+
+@media (max-width: 420px) {
+    .true__story {
+        h1 {
+            font-size: 1.87rem;
+        }
+    }
+}

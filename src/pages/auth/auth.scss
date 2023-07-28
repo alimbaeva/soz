@@ -1,0 +1,70 @@
+@import '../../variables.scss';
+
+.auth {
+  width: 325px;
+  margin: 100px auto;
+
+  &__title {
+    text-align: center;
+    @extend %titleCard;
+    font-size: 2.25rem;
+    font-weight: 400;
+  }
+
+  &__text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.875rem;
+    color: $gray;
+    text-align: center;
+  }
+
+  .auth-form {
+
+    &__input {
+      display: flex;
+      align-items: center;
+      background-color:#E9EBEE;
+      padding: 7px 16px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+  
+    &__input img {
+      margin-right: 10px;
+    }
+  
+    &__input input {
+      border-style: none;
+      background-color: transparent;
+    }
+  
+    &__input input:focus {
+      outline: none;
+    }
+
+    .submit-button {
+      width: 100%;
+      @extend %titleCard;
+      font-weight: 700;
+      padding: 16px 0;
+      border-radius: 12px;
+      background-color:#E9EBEE;
+      border-style: none;
+      margin-top: 12px;
+      cursor: pointer;
+    }
+  }
+
+  .question {
+    @extend %titleCard;
+    font-size: 0.875rem;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .question span {
+    color: #FFD36F;
+    margin-left: 8px;
+    cursor: pointer;
+  }
+}

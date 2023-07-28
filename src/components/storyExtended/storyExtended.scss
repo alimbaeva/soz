@@ -1,0 +1,180 @@
+@import '../../variables.scss';
+
+.story__blok {
+    h3 {
+        font-size: 2.25rem;
+        font-style: normal;
+        font-weight: 800;
+    }
+    
+    .story__user-info {
+        display: flex;
+
+        .user-image {
+            @extend %flexCenter;
+            margin-right: .7rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .user-name {
+            @extend %saptext;
+            margin: 0
+        }
+
+    }
+
+    .story-text-block {
+        @extend %flexAlignCenter;
+
+        svg {
+            margin: 0 .5rem;
+        }
+
+        .story-date,
+        span {
+            @extend %saptext;
+            @extend %flexAlignCenter;
+            font-weight: 400;
+            color: #676767;
+        }
+    }
+}
+
+.comments__block {
+    form {
+        @extend %flexAlignCenter;
+        flex-wrap: wrap;
+        width: 100%;
+        margin-top: 2.6rem;
+
+        label {
+            display: block;
+            font-size: 1.25rem;
+            margin-bottom: 1.37rem;
+        }
+
+        textarea {
+            display: block;
+            padding: .5rem;
+            background: inherit;
+            width: 100%;
+            border-radius: .8rem;
+            min-height: 9.6rem;
+        }
+
+        
+        button {
+            @extend %saptext !optional;
+            margin-left: calc(100% - 239px);
+            margin-top: 1rem;
+            display: block;
+            font-size: 1.25rem;
+            width: 14.9rem;
+            height: 4.31rem;
+            border-radius: 3.1rem;
+            background-color: inherit;
+        }
+    }
+
+    ul {
+        margin: 2.62rem 0 4.5rem 0;
+
+        li {
+            display: flex;
+            align-items: flex-start;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid $gray;
+
+            .guest-image {
+                @extend %flexCenter;
+                width: 1.87rem;
+                height: 1.87rem;
+                margin-right: 1rem;
+                border-radius: 3.12rem;
+                overflow: hidden;
+                background-color: $gray;
+
+                img {
+                    width: 1.9rem;
+                }
+            }
+
+            .guest-name {
+                @extend %saptext;
+                @extend %flexAlignCenter;
+
+                p {
+                    margin: 0;
+                }
+                span {
+                    color: $gray;
+                    font-size: 13px;
+                    margin-left: .5rem;
+                }
+            }
+
+            .analis {
+                @extend %flexAlignCenter;
+
+                button {
+                    border: none;
+                    padding: .2rem;
+                    background: inherit;
+                    border-radius: .8rem;
+                    margin-right: .5rem;
+                    color: $gray;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 672px) {
+    .story__blok {
+        h3 {
+            font-size: 1.25rem;
+        }
+
+        p.story {
+            font-weight: 400;
+        }
+    }
+    .comments__block {
+        form {
+            button {
+                height: 3.1rem;
+                width: 10rem;
+                margin-left: calc(100% - 169px);
+            }
+        }
+    }
+
+    ul li {
+        .text {
+            font-size: .8rem;
+            width: 80%;
+        }
+    }
+}
+
+@media (max-width: 426px) {
+    ul li {
+        .guest-image {
+            width: 2.5rem;
+        }
+
+        .guest-info {
+            width: 80%;
+        }
+        .analis {
+            width: 90%;
+        }
+
+        button {
+            font-size: .7rem;
+        }
+    }
+}

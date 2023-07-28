@@ -1,0 +1,13 @@
+.story__extended {
+    h2 {
+        font-size: 56px;
+    }
+}
+
+@media (max-width: 672px) {
+    .story__extended {
+        h2 {
+            font-size: 36px;
+        }
+    }
+}

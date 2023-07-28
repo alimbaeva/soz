@@ -1,0 +1,43 @@
+.header {
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .3rem 0;
+  }
+  
+  .appbar {
+    display: flex;
+    align-items: center;
+  }
+
+  .signIn-btn {
+    font-size: 1.125rem;
+    padding: .6rem 1.87rem;
+    background-color: inherit;
+    border-radius: 1.25rem;
+  }
+
+  .cange__theme {
+    background-color: inherit;
+    border: none;
+    border-radius: 3.1rem;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    &__logo {
+      width: 4.4rem;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .signIn-btn {
+      font-size: 0.875rem;
+      padding: .3rem .93rem;
+    }
+  }
+}

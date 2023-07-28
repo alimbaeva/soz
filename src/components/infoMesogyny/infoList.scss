@@ -1,0 +1,31 @@
+.info-list {
+  margin: 2.13rem 0 6.25rem 0;
+
+  &__item {
+    border-bottom: 1px solid #676767;
+  }
+
+  &__item a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.25rem;
+  }
+
+  &__item-text {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info-list {
+    &__item a {
+      font-size: 1rem;
+    }
+
+    .arrow-icon {
+      width: 2.25rem;
+      height: 2.25rem;
+    }
+  }
+}

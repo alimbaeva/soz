@@ -1,0 +1,35 @@
+@import '../../variables.scss';
+
+.misogyny {
+    h1 {
+        @extend %titleCard;
+        font-size: 3.5rem;
+    }
+
+    .button {
+        @extend %saptext !optional;
+        display: block;
+        font-size: 1.25rem;
+        width: 14.9rem;
+        height: 4.31rem;
+        border-radius: 3.1rem;
+        margin: 2.63rem auto 4.5rem;
+        background-color: inherit;
+    }
+}
+
+@media (max-width: 768px) {
+    .misogyny {
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .misogyny {
+        h1 {
+            font-size: 1.87rem;
+        }
+    }
+}
