@@ -16,8 +16,8 @@ export const TopScreen: FC = () => {
           <div className="topscreen__inner">
             <p className="section-description">Сөздүн күчүн караңыз!</p>
             <h1 className="topscreen__title">
-              <span className="first-word">Ааламдын</span> көркү {''}
-              <span className="last-word">аялзат</span>
+              <span className="first-word">Аял </span> - ааламдын {''}
+              <span className="last-word">жүрөгү</span>
             </h1>
             <div className="btn-group">
               <button className={themes ? 'white-btn button_Full_Li' : 'white-btn button_Full_Bl'}>

@@ -9,6 +9,7 @@ import { PostPublish } from './pages/postPublish/PostPublish';
 import { Podcast } from './pages/podcast/Podcast';
 import { TrueStoryExtended } from './pages/trueStoryExtended/TrueStoryExtended';
 import { Auth } from './pages/auth/Auth';
+import { Question } from './pages/question/Question';
 
 import { useSelector } from 'react-redux';
 import { RootState } from './store';
@@ -38,6 +39,7 @@ export const App: FC = () => {
           <Route path="/podcast" element={<Podcast />} />
           <Route path="/trueStory/:id" element={<TrueStoryExtended />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/question" element={<Question />} />
         </Routes>
       </div>
       <Footer />
