@@ -1,0 +1,20 @@
+@import '../../variables.scss';
+
+.help-form {
+    @extend %flexCenter;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 25rem;
+    height: 30rem;
+    background-color: aqua;
+    border-radius: 1rem;
+
+    label {
+        display: block;
+        margin-bottom: .8rem;
+        font-size: 1.7rem;
+
+    }
+}

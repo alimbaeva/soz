@@ -4,11 +4,15 @@ import call_center from '../../assets/icons/call_center.svg';
 import './helperButton.scss';
 import { useEffect, useState } from 'react';
 import { randomNumber } from '../../utils/randomNumber';
+import { useDispatch } from 'react-redux';
+import { store } from '../../store';
+import { setShow } from '../../store/helperFormReducer';
 
 const images = [collective_group_help, call_center];
 
 export const HelperButton = () => {
   const [image, setImage] = useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -22,7 +26,7 @@ export const HelperButton = () => {
   }, []);
 
   const handleClick = () => {
-    return;
+    dispatch(setShow(true));
   };
 
   return (

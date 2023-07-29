@@ -15,9 +15,11 @@ import { RootState } from './store';
 
 import './index.scss';
 import { HelperButton } from './components/helperButton/HelperButton';
+import { HelpForm } from './components/helperButton/HelpForm';
 
 export const App: FC = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
+  const { show } = useSelector((state: RootState) => state.HelpFormReducer);
 
   useEffect(() => {
     document.body.style.backgroundColor = themes ? '#000' : '#FFF';
@@ -40,6 +42,7 @@ export const App: FC = () => {
       </div>
       <Footer />
       <HelperButton />
+      {show ? <HelpForm /> : ''}
     </Router>
   );
 };
