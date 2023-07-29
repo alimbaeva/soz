@@ -47,7 +47,7 @@ export const CardsShortStory: FC<TPost> = (post: TPost) => {
         <h4>{post.post.title}</h4>
         <p>{post.post.text}</p>
         <section>
-          <Analysis like={post.post.likes} dislike={0} countComments={0} />
+          <Analysis id={post.post.id} like={post.post.likes} dislike={0} countComments={0} />
         </section>
       </div>
       <div className="card__footer">

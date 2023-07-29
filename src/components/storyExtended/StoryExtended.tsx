@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Analysis } from '../../components/UI-kit/analysis/Analysis';
-import './storyExtended.scss';
-import { RootState } from '../../store';
+import { RootState, store } from '../../store';
 import { useSelector } from 'react-redux';
+import { CommentsCreate, GetComments } from '../../store/contentReducer';
+import './storyExtended.scss';
 
 type FormValues = {
   description: string;
@@ -12,6 +13,7 @@ type FormValues = {
 export const StoryExtended = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
   const { post } = useSelector((state: RootState) => state.ContentReducer);
+  const { userData } = useSelector((state: RootState) => state.AuthReducer);
 
   const {
     register,
@@ -20,11 +22,16 @@ export const StoryExtended = () => {
   } = useForm<FormValues>();
 
   useEffect(() => {
-    console.log(post);
-  }, [post]);
+    store.dispatch(GetComments({ id: post.id, tokenUser: userData.token }));
+  }, []);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data); // Access form data when submitted
+    if (userData.token) {
+      store.dispatch(
+        CommentsCreate({ id: post.id, tokenUser: userData.token, text: data.description })
+      );
+    }
   };
 
   return (
@@ -98,7 +105,7 @@ export const StoryExtended = () => {
 
         <p className="story">{post.text}</p>
       </div>
-      <Analysis like={post.likes} dislike={0} countComments={0} />
+      <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
       <div className="comments__block">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="description">Сын-пикир калтыруу:</label>
@@ -126,7 +133,7 @@ export const StoryExtended = () => {
               <p className="text">Тилекке каршы коомчулукта эң көп кездешкен окуялар</p>
               <div className="analis">
                 <button>Жооп беруу</button>
-                <Analysis like={post.likes} dislike={0} countComments={0} />
+                <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
               </div>
             </div>
           </li>
