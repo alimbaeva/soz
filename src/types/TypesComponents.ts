@@ -1,4 +1,5 @@
 export interface DataI {
+  id: number;
   title: string;
   text: string;
   personal: string;

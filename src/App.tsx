@@ -14,6 +14,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from './store';
 
 import './index.scss';
+import { HelperButton } from './components/helperButton/HelperButton';
 
 export const App: FC = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
@@ -33,11 +34,12 @@ export const App: FC = () => {
           <Route path="/misogyny" element={<Misogyny />} />
           <Route path="/postPublish" element={<PostPublish />} />
           <Route path="/podcast" element={<Podcast />} />
-          <Route path="/trueStoryID" element={<TrueStoryExtended />} />
+          <Route path="/trueStory/:id" element={<TrueStoryExtended />} />
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </div>
       <Footer />
+      <HelperButton />
     </Router>
   );
 };

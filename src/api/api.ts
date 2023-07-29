@@ -64,6 +64,7 @@ export const api = {
       });
       if (response.status) {
         const data = await response.json();
+        console.log(data);
         return data;
       }
     } catch (err) {
@@ -73,6 +74,24 @@ export const api = {
   async getPosts() {
     try {
       const response = await fetch(`${apiPath}${apiEndpoints.getPosts}`, {
+        method: METHODS.get,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.status) {
+        const data = await response.json();
+        console.log(data, response.status);
+        return data;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async getPost(id: number) {
+    try {
+      const response = await fetch(`${apiPath}${apiEndpoints.getPosts}${id}`, {
         method: METHODS.get,
         headers: {
           Accept: 'application/json',
