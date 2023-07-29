@@ -1,11 +1,8 @@
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { Inputs } from '../../types/TypesComponents';
 
-type Inputs = {
-  title: string;
-  phone: string;
-  text: string;
-};
+import './helpForm.scss';
 
 export const HelpForm: FC = () => {
   const {
@@ -15,8 +12,9 @@ export const HelpForm: FC = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    return;
+    console.log(data);
   };
+
   return (
     <div className="help-form">
       <form className="" onSubmit={handleSubmit(onSubmit)}>

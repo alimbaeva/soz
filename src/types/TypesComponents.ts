@@ -39,3 +39,9 @@ export interface TPostComments {
   text: string;
   user_liked: boolean;
 }
+
+export type Inputs = {
+  title: string;
+  phone: string;
+  text: string;
+};

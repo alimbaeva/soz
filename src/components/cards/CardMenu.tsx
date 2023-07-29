@@ -47,10 +47,8 @@ export const CardMenu: FC = () => {
             <div className="img-block">
               <img src={mesogyny} alt="" />
             </div>
-            <h3 className="cardMenu-item__title">Мизогиния</h3>
-            <p className="cardMenu-item__descr">
-              Мизогинияга тиешелүү сөз жазыңыз. Билбегендер билип алсын.
-            </p>
+            <h3 className="cardMenu-item__title">Аялдарды жектөө</h3>
+            <p className="cardMenu-item__descr">Аялдарды жектөө сөздөрүн жок кылуу.</p>
             <div className="first-line-buttons">
               <button className="card-menu__button">Жаңы сөз кош</button>
               <svg
@@ -76,11 +74,11 @@ export const CardMenu: FC = () => {
         <li className="cardMenu-item">
           <Link to="" className="cardMenu-item__inner">
             <img src="" alt="" />
-            <h3 className="cardMenu-item__title">Фразеологизм сөз</h3>
+            <h3 className="cardMenu-item__title">Кастык тили</h3>
             <p className="cardMenu-item__descr">
-              Кыргыз тилиндеги мааниси терең фразеологизм сөздөр.
+              Кастык тили - бул адамдык этникалык, диний, жыныстык ...
             </p>
-            <button className="card-menu__button">Жаңы сөз кош</button>
+            <button className="card-menu__button">Кененирээк</button>
           </Link>
         </li>
         <li className="cardMenu-item">

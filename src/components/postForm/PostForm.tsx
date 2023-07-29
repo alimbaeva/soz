@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -10,6 +10,7 @@ type Inputs = {
 };
 
 export const PostForm: FC = () => {
+  const [activeRubric, setActiveRubric] = useState<string>('');
   const {
     register,
     formState: { errors },
@@ -19,6 +20,12 @@ export const PostForm: FC = () => {
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(JSON.stringify(data));
   };
+
+  const handleClick = (rubric: string) => {
+    setActiveRubric(rubric);
+  };
+
+  const isButtonActive = (rubric: string) => rubric === activeRubric;
 
   return (
     <>
@@ -48,10 +55,30 @@ export const PostForm: FC = () => {
             Рубриканы тандоо<span>*</span>
           </label>
           <div className="heading-buttons">
-            <input type="button" value="#сөздүнкүчү" />
-            <input type="button" value="#болгонокуя" />
-            <input type="button" value="#мизогония" />
-            <input type="button" value="#фразеологизм" />
+            <input
+              type="button"
+              value="#сөздүнкүчү"
+              className={isButtonActive('#сөздүнкүчү') ? 'active' : ''}
+              onClick={() => handleClick('#сөздүнкүчү')}
+            />
+            <input
+              type="button"
+              value="#болгонокуя"
+              className={isButtonActive('#болгонокуя') ? 'active' : ''}
+              onClick={() => handleClick('#болгонокуя')}
+            />
+            <input
+              type="button"
+              value="#мизогония"
+              className={isButtonActive('#мизогония') ? 'active' : ''}
+              onClick={() => handleClick('#мизогония')}
+            />
+            <input
+              type="button"
+              value="#кастыктили"
+              className={isButtonActive('#кастыктили') ? 'active' : ''}
+              onClick={() => handleClick('#кастыктили')}
+            />
           </div>
         </div>
         <div className="post-form__input-block">
