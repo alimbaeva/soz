@@ -14,6 +14,7 @@ export const HelpFormSlice = createSlice({
   initialState: initialHelpForm,
   reducers: {
     setShow: (state: IHelpForm, action) => {
+      console.log(action.payload);
       state.show = action.payload;
     },
   },

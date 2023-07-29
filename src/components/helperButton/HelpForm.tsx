@@ -18,7 +18,7 @@ export const HelpForm: FC = () => {
     return;
   };
   return (
-    <div>
+    <div className="help-form">
       <form className="" onSubmit={handleSubmit(onSubmit)}>
         <div className="">
           <label htmlFor="text">
@@ -58,6 +58,7 @@ export const HelpForm: FC = () => {
           />
           <div>{errors.text && <p>{errors?.text.message || 'Error!'}</p>}</div>
         </div>
+        <button>Жонотуу</button>
       </form>
     </div>
   );
