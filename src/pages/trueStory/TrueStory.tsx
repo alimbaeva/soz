@@ -34,25 +34,9 @@ export const TrueStory: FC = () => {
         {posts.length
           ? posts.map((el, id) => {
               if (id === 1) {
-                return (
-                  <CardsShortStory
-                    id={el.id}
-                    key={el.id + el.title}
-                    title={el.title}
-                    text={el.text}
-                    personal={el.author.username}
-                  />
-                );
+                return <CardsShortStory key={id + el.id} post={el} />;
               } else {
-                return (
-                  <CardsShortStory
-                    id={el.id}
-                    key={id}
-                    title={el.title}
-                    text={el.text}
-                    personal={el.author.username}
-                  />
-                );
+                return <CardsShortStory key={id + el.id} post={el} />;
               }
             })
           : ''}
