@@ -10,7 +10,7 @@ import moon from '../../assets/icons/moon.svg';
 
 import './header.scss';
 
-import logo from '../../assets/images/logo.svg';
+import logo from '../../assets/icons/logo-msg.svg';
 import { setExit } from '../../store/authUserReducer';
 
 export const Header: FC = () => {
