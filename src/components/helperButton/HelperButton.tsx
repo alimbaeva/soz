@@ -21,11 +21,13 @@ export const HelperButton = () => {
     };
   }, []);
 
+  const handleClick = () => {
+    return;
+  };
+
   return (
-    <button className="helper-button">
-      <a href="">
-        <img src={images[image]} alt="" />
-      </a>
+    <button className="helper-button" onClick={handleClick}>
+      <img src={images[image]} alt="" />
     </button>
   );
 };

@@ -5,7 +5,7 @@ import message from '../../../assets/icons/message.svg';
 import './analysis.scss';
 import { useSelector } from 'react-redux';
 import { RootState, store } from '../../../store';
-import { SetLike } from '../../../store/contentReducer';
+import { RemoveLike, SetLike } from '../../../store/contentReducer';
 
 interface IAnalysis {
   id: number;
@@ -16,10 +16,13 @@ interface IAnalysis {
 
 export const Analysis: FC<IAnalysis> = ({ id, like, dislike, countComments }: IAnalysis) => {
   const { userData } = useSelector((state: RootState) => state.AuthReducer);
+  const { isLike } = useSelector((state: RootState) => state.ContentReducer);
 
   const handleLike = () => {
     if (userData.token) {
-      store.dispatch(SetLike({ id, tokenUser: userData.token }));
+      console.log(isLike);
+      if (!isLike) store.dispatch(SetLike({ id, tokenUser: userData.token }));
+      if (isLike) store.dispatch(RemoveLike({ id, tokenUser: userData.token }));
     }
   };
 
