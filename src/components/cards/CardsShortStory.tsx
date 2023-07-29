@@ -1,20 +1,34 @@
 import { FC } from 'react';
-// import like from '../../assets/icons/like.svg';
-// import dislike from '../../assets/icons/dislike.svg';
-// import message from '../../assets/icons/message.svg';
 import userCircle from '../../assets/icons/userCircle.svg';
 import { DataI } from '../../types/TypesComponents';
-import './cardsShortStory.scss';
 import { Analysis } from '../UI-kit/analysis/Analysis';
 import { randomNumber } from '../../utils/randomNumber';
+import { useNavigate } from 'react-router-dom';
+
+import { store } from '../../store';
+import { GetPost } from '../../store/contentReducer';
+
+import './cardsShortStory.scss';
 
 const collors = ['#EFFF9F', '#FFD36F', '#AF9FFF', '#589EF4', '#FD97E9'];
 
-export const CardsShortStory: FC<DataI> = ({ title, text }: DataI) => {
+export const CardsShortStory: FC<DataI> = ({ id, title, text, personal }: DataI) => {
   const num = randomNumber(collors.length - 1);
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/trueStory/${id}`);
+    store.dispatch(GetPost(id));
+  };
+
   return (
-    <div key={title} className="card" style={{ backgroundColor: `${collors[num]}` }}>
+    <div
+      onClick={handleClick}
+      key={title}
+      className="card"
+      style={{ backgroundColor: `${collors[num]}` }}
+    >
       <div className="card__body">
         <h4>{title}</h4>
         <p>{text}</p>
@@ -25,7 +39,7 @@ export const CardsShortStory: FC<DataI> = ({ title, text }: DataI) => {
       <div className="card__footer">
         <img src={userCircle} alt="" />
         <p>
-          Колдонуучу
+          {personal}
           <span>1</span>
         </p>
       </div>

@@ -33,7 +33,7 @@ export const App: FC = () => {
           <Route path="/misogyny" element={<Misogyny />} />
           <Route path="/postPublish" element={<PostPublish />} />
           <Route path="/podcast" element={<Podcast />} />
-          <Route path="/trueStoryID" element={<TrueStoryExtended />} />
+          <Route path="/trueStory/:id" element={<TrueStoryExtended />} />
           <Route path="/auth" element={<Auth />} />
         </Routes>
       </div>
