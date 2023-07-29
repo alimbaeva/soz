@@ -82,3 +82,48 @@
         ;
     }
 }
+
+.help-form {
+  padding: 20px;
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 350px;
+  }
+
+  &__input label {
+    @extend %titleCard;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  &__input input,
+  &__textarea  {
+    padding: 10px 10px;
+    border-radius: 6px;
+    border-style: none;
+    background-color: #E9EBEE;
+  }
+
+  &__input input:focus,
+  &__textarea:focus {
+    outline: none;
+  }
+  
+  &__textarea {
+    resize: none;
+    margin-bottom: 20px;
+  }
+
+  &__button {
+    padding: 8px 35px;
+    background-color: transparent;
+    color: $white;
+    border-radius: 13px;
+    border: 1px solid $white;
+  }
+
+}
