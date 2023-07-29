@@ -9,17 +9,16 @@ import { PostPublish } from './pages/postPublish/PostPublish';
 import { Podcast } from './pages/podcast/Podcast';
 import { TrueStoryExtended } from './pages/trueStoryExtended/TrueStoryExtended';
 import { Auth } from './pages/auth/Auth';
+import { Question } from './pages/question/Question';
 
 import { useSelector } from 'react-redux';
 import { RootState } from './store';
 
 import './index.scss';
 import { HelperButton } from './components/helperButton/HelperButton';
-import { HelpForm } from './components/helperButton/HelpForm';
 
 export const App: FC = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
-  const { show } = useSelector((state: RootState) => state.HelpFormReducer);
 
   useEffect(() => {
     document.body.style.backgroundColor = themes ? '#000' : '#FFF';
@@ -38,11 +37,11 @@ export const App: FC = () => {
           <Route path="/podcast" element={<Podcast />} />
           <Route path="/trueStory/:id" element={<TrueStoryExtended />} />
           <Route path="/auth" element={<Auth />} />
+          <Route path="/question" element={<Question />} />
         </Routes>
       </div>
       <Footer />
       <HelperButton />
-      {show ? <HelpForm /> : ''}
     </Router>
   );
 };

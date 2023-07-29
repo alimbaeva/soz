@@ -29,9 +29,9 @@ export const CardWords = () => {
         </div>
         <div className="card__texts">
           <div>
-            <h5>Өркүнүң өскүр</h5> <span>40 мүнөт мурун</span>
+            <h5>Ордуңду бил. Сени кыз деп коет!</h5> <span>40 мүнөт мурун</span>
           </div>
-          <p>Өркүнүң өскүр деген эмнени түшүндүрөт?</p>
+          <p>Сен көп ийгиөиктерди багындырып аласың!</p>
           <div className="card_btns">
             <button>Жооп беруу</button>
             <Analysis id={0} like={0} dislike={0} countComments={0} />
@@ -44,9 +44,9 @@ export const CardWords = () => {
         </div>
         <div className="card__texts">
           <div>
-            <h5>Өркүнүң өскүр</h5> <span>40 мүнөт мурун</span>
+            <h5>Эркекче кылдың!</h5> <span>40 мүнөт мурун</span>
           </div>
-          <p>Өркүнүң өскүр деген эмнени түшүндүрөт?</p>
+          <p>Сөзүңө так турдуң, мыктысың!</p>
           <div className="card_btns">
             <button>Жооп беруу</button>
             <Analysis id={0} like={0} dislike={0} countComments={0} />
