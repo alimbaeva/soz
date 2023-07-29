@@ -63,6 +63,12 @@
   }
 }
 
+.heading-buttons input.active {
+  background-color: #4caf50; 
+  color: #ffffff; 
+  
+}
+
 @media screen and (max-width: 768px) {
   .post-form {
     &__input-block label {
