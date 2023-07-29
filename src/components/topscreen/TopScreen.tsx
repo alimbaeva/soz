@@ -21,7 +21,7 @@ export const TopScreen: FC = () => {
             </h1>
             <div className="btn-group">
               <button className={themes ? 'white-btn button_Full_Li' : 'white-btn button_Full_Bl'}>
-                Жаңы сөз кош
+                Окуялар
                 <Link className="bunner__link" to="/trueStory" />
               </button>
               <button className={themes ? 'banner-btn btn_Bl_border' : 'banner-btn btn_Li_border'}>

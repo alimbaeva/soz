@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../api/api';
-import { TPosts } from '../types/TypesComponents';
+import { TPostComments, TPosts } from '../types/TypesComponents';
 
 interface IContent {
   posts: TPosts[];
-  commentsIsPosts: TPosts[];
+  commentsIsPosts: TPostComments[];
   post: TPosts;
   isLike: boolean;
   isDisLike: boolean;
@@ -100,10 +100,8 @@ export const ContentSlice = createSlice({
       }
     });
     builder.addCase(GetComments.fulfilled, (state, action) => {
-      if (action.payload === 200) {
-        state.commentsCreate = true;
-        console.log('_---__');
-      }
+      state.commentsIsPosts = action.payload;
+      console.log(action.payload);
     });
   },
 });
