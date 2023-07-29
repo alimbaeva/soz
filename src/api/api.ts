@@ -192,4 +192,26 @@ export const api = {
       console.error(err);
     }
   },
+  async setPost(title: string, text: string, hashtag: string) {
+    try {
+      const response = await fetch(`${apiPath}${apiEndpoints.getPosts}`, {
+        method: METHODS.post,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ title: title, text: text, hashtag: hashtag }),
+      });
+      if (response.status) {
+        if (response.status == 201) {
+          console.log(response);
+        }
+        const data = await response.json();
+        console.log(data);
+        return data;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };
