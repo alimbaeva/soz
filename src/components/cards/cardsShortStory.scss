@@ -5,7 +5,7 @@
     height: 24.4rem;
     padding: 1.5rem;
     margin-bottom: 2rem;
-    position: relative;
+    // position: relative;
     border-radius: 1.25rem;
 
     h4 {
@@ -15,6 +15,7 @@
 
     p {
         @extend %saptext;
+        width: 94%;
         color: $black;
     }
 
@@ -24,8 +25,8 @@
 
     &__footer {
         @extend %flexAlignCenter !optional;
-        position: absolute;
-        bottom: 0;
+        // position: absolute;
+        // bottom: 2%;
 
         p {
             font-weight: 600;
@@ -38,30 +39,30 @@
     }
 }
 
-.card:nth-child(2) {
-    position: relative;
-    top: 12.5rem;
-}
+// .card:nth-child(2) {
+//     position: relative;
+//     top: 12.5rem;
+// }
 
-.card:nth-child(5) {
-    position: relative;
-    top: 12.5rem;
-}
+// .card:nth-child(5) {
+//     position: relative;
+//     top: 12.5rem;
+// }
 
 @media (max-width: 1130px) {
     
-    .card:nth-child(2) {
-        position: static;
-    }
+    // .card:nth-child(2) {
+    //     position: static;
+    // }
 
-    .card:nth-child(5) {
-        position: static;
-    }
+    // .card:nth-child(5) {
+    //     position: static;
+    // }
 
-    .card:nth-child(2n) {
-        position: relative;
-        top: 14.4rem;
-    }
+    // .card:nth-child(2n) {
+    //     position: relative;
+    //     top: 14.4rem;
+    // }
 }
 
 @media (max-width: 775px) {
@@ -77,9 +78,9 @@
         }
     }
 
-    .card:nth-child(2n) {
-        top: 6.25rem;
-    }
+    // .card:nth-child(2n) {
+    //     top: 6.25rem;
+    // }
 }
 
 @media (max-width: 710px) {
@@ -97,7 +98,7 @@
         }
     }
 
-    .card:nth-child(2n) {
-        position: static;
-    }
+    // .card:nth-child(2n) {
+    //     position: static;
+    // }
 }

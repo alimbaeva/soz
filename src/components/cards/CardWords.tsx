@@ -4,7 +4,16 @@ import { randomNumber } from '../../utils/randomNumber';
 import woman from '../../assets/icons/woman.svg';
 import './cardWords.scss';
 
-const collors = ['#EFFF9F', '#FFD36F', '#AF9FFF', '#589EF4', '#FD97E9'];
+const collors = [
+  '#EFFF9F',
+  '#FFD36F',
+  '#AF9FFF',
+  '#589EF4',
+  '#FD97E9',
+  '#40E0D0',
+  '#87CEFA',
+  '#F4A460',
+];
 
 export const CardWords = () => {
   const num = randomNumber(collors.length - 1);

@@ -10,7 +10,17 @@ import { GetPost } from '../../store/contentReducer';
 
 import './cardsShortStory.scss';
 
-const collors = ['#EFFF9F', '#FFD36F', '#AF9FFF', '#589EF4', '#FD97E9'];
+// const collors = ['#EFFF9F', '#FFD36F', '#AF9FFF', '#589EF4', '#FD97E9'];
+const collors = [
+  '#EFFF9F',
+  '#FFD36F',
+  '#AF9FFF',
+  '#589EF4',
+  '#FD97E9',
+  '#40E0D0',
+  '#87CEFA',
+  '#F4A460',
+];
 
 interface TPost {
   post: {
@@ -53,7 +63,7 @@ export const CardsShortStory: FC<TPost> = (post: TPost) => {
       <div className="card__footer">
         <img src={userCircle} alt="" />
         <p>
-          {post.post.author.username}
+          {post.post.author.username ? post.post.author.username : 'Колдонуучу'}
           <span>1</span>
         </p>
       </div>
