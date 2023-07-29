@@ -214,4 +214,24 @@ export const api = {
       console.error(err);
     }
   },
+  async setHelp(title: string, text: string, phone: string) {
+    try {
+      const response = await fetch(`https://sozdun-kuchu.onrender.com/help/`, {
+        method: METHODS.post,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: title,
+          message: `phone: ${phone}, message: ${text}`,
+        }),
+      });
+      if (response.status) {
+        return response.status;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };

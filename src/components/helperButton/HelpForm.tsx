@@ -1,10 +1,17 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Inputs } from '../../types/TypesComponents';
+import { RootState, store } from '../../store';
+import { SetHelp, setShow } from '../../store/helperFormReducer';
 
 import './helpForm.scss';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const HelpForm: FC = () => {
+  const { sacsess } = useSelector((state: RootState) => state.HelpFormReducer);
+
+  const dispatch = useDispatch();
+
   const {
     register,
     formState: { errors },
@@ -12,8 +19,12 @@ export const HelpForm: FC = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
+    store.dispatch(SetHelp({ title: data.title, text: data.text, phone: data.phone }));
   };
+
+  useEffect(() => {
+    dispatch(setShow(true));
+  }, []);
 
   return (
     <div className="help-form">

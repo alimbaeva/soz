@@ -8,6 +8,7 @@ export const apiEndpoints = {
   removeLike: '/remove_like/',
   comments: '/comments/',
   commentsCreate: '/comments/create/',
+  help: 'help/',
 };
 
 export const enum METHODS {
