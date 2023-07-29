@@ -6,6 +6,9 @@ import { ISiginUp } from '../../types/TypesComponents';
 import { RootState, store } from '../../store';
 import { Login, SiginUp } from '../../store/authUserReducer';
 
+import { ModalWindow } from '../../components/modalWindow/ModalWindow';
+import useModal from '../../components/modalWindow/useModal';
+
 import LoginIcon from '../../assets/icons/login-icon.svg';
 import PasswordIcon from '../../assets/icons/password-icon.svg';
 
@@ -15,6 +18,7 @@ export const Auth: FC = () => {
   const { isRegister, isAuth } = useSelector((state: RootState) => state.AuthReducer);
 
   const [showRegister, setShowRegister] = useState(false);
+  const { modalActive, setActive } = useModal();
   const [formValueRegister, setFormValueRegister] = useState({
     username: '',
     password1: '',
@@ -45,7 +49,6 @@ export const Auth: FC = () => {
         username: data.username,
         password: data.password1,
       });
-
       store.dispatch(SiginUp(data));
     } else {
       const dataUser = {
@@ -62,17 +65,25 @@ export const Auth: FC = () => {
   useEffect(() => {
     if (isRegister) {
       store.dispatch(Login(formValue));
+      setActive();
     }
   }, [isRegister]);
 
   useEffect(() => {
     if (isAuth) {
-      navigate('/');
+      setTimeout(() => navigate('/'), 2000);
     }
   }, [isAuth]);
 
   return (
     <section className="auth">
+      <ModalWindow active={modalActive} setActive={setActive}>
+        <div className="success-title-block">
+          <h2 className="success-text success-title">Ийгиликтүү катталдыңыз! </h2>
+        </div>
+        <h3 className="success-text success-text2">Сөз сайтына куш келдиңиз!</h3>
+        <p className="success-text success-text3">Жаратыңыз, шыктаныңыз, дүйнөнү өзгөртүңүз!</p>
+      </ModalWindow>
       <h2 className="auth__title">{!showRegister ? 'Кирүү' : 'Катталуу'}</h2>
       <p className="auth__text">
         {!showRegister
@@ -89,9 +100,8 @@ export const Auth: FC = () => {
             {...register('username', { required: 'Поле обязательно для заполнения' })}
             aria-invalid={errors.username ? 'true' : 'false'}
           />
-          {errors.username?.type === 'required' && <p role="alert">Сураныч, атыңызды киргизиңиз</p>}
         </div>
-
+        {errors.username?.type === 'required' && <p role="alert">*Сураныч, атыңызды киргизиңиз</p>}
         <div className="auth-form__input password-input">
           <img src={PasswordIcon} alt="" />
           <input
@@ -106,32 +116,32 @@ export const Auth: FC = () => {
               },
             })}
           />
-          {errors.password1?.type === 'required' && (
-            <p role="alert">Сураныч, паролуңузду киргизиңиз</p>
-          )}
         </div>
-
-        {showRegister && (
-          <div className="auth-form__input password-input">
-            <img src={PasswordIcon} alt="" />
-            <input
-              type="password2"
-              id="password2"
-              placeholder="Сыр сөздү тастыктоо"
-              {...register('password2', {
-                required: 'Поле обязательно для заполнения',
-                minLength: {
-                  value: 6,
-                  message: 'Пароль должен быть длиной не менее 6 символов',
-                },
-              })}
-            />
-            {errors.password2?.type === 'required' && (
-              <p role="alert">Сураныч, паролуңузду киргизиңиз</p>
-            )}
-          </div>
+        {errors.password1?.type === 'required' && (
+          <p role="alert">*Сураныч, cыр сөздү киргизиңиз</p>
         )}
-
+        {showRegister && (
+          <>
+            <div className="auth-form__input password-input">
+              <img src={PasswordIcon} alt="" />
+              <input
+                type="password2"
+                id="password2"
+                placeholder="Сыр сөздү тастыктоо"
+                {...register('password2', {
+                  required: 'Поле обязательно для заполнения',
+                  minLength: {
+                    value: 6,
+                    message: 'Пароль должен быть длиной не менее 6 символов',
+                  },
+                })}
+              />
+            </div>
+            {errors.password2?.type === 'required' && (
+              <p role="alert">*Сураныч, cыр сөздү киргизиңиз</p>
+            )}
+          </>
+        )}
         <button type="submit" className="submit-button">
           {!showRegister ? 'Кирүү' : 'Катталуу'}
         </button>

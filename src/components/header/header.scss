@@ -5,6 +5,14 @@
     justify-content: space-between;
     padding: .3rem 0;
   }
+
+  &__logo {
+    width: 65px;
+    
+    img {
+      width: 100%;
+    }
+  }
   
   .appbar {
     display: flex;

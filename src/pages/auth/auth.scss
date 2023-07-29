@@ -68,3 +68,26 @@
     cursor: pointer;
   }
 }
+
+.success-text {
+  text-align: center;
+}
+
+.success-title-block {
+  display: table;
+  width: 321px;
+  height: 165px;
+  margin: 22px auto 0 auto;
+  background-image: url('../../assets/icons/success-bgk.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  .success-title {
+    @extend %titleCard;
+    font-size: 2.25rem;
+    color: #F9F871;
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
