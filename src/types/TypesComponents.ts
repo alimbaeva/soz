@@ -1,4 +1,5 @@
 export interface DataI {
+  id: number;
   title: string;
   text: string;
   personal: string;
@@ -19,6 +20,18 @@ export interface ISiginUp extends ISiginIn {
 }
 
 export interface TPosts {
+  id: number;
+  author: {
+    username: string;
+  };
+  title: string;
+  text: string;
+  hashtag: string;
+  likes: number;
+  user_liked: boolean;
+}
+
+export interface TPostComments {
   id: number;
   author: {
     username: string;

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Analysis } from '../../components/UI-kit/analysis/Analysis';
-import './storyExtended.scss';
-import { RootState } from '../../store';
+import { RootState, store } from '../../store';
 import { useSelector } from 'react-redux';
+import { CommentsCreate, GetComments } from '../../store/contentReducer';
+import './storyExtended.scss';
 
 type FormValues = {
   description: string;
@@ -11,18 +12,32 @@ type FormValues = {
 
 export const StoryExtended = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
+  const { post } = useSelector((state: RootState) => state.ContentReducer);
+  const { userData } = useSelector((state: RootState) => state.AuthReducer);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>();
+
+  useEffect(() => {
+    store.dispatch(GetComments({ id: post.id, tokenUser: userData.token }));
+  }, []);
+
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data); // Access form data when submitted
+    if (userData.token) {
+      store.dispatch(
+        CommentsCreate({ id: post.id, tokenUser: userData.token, text: data.description })
+      );
+    }
   };
+
   return (
     <div>
       <div className="story__blok">
-        <h3>“Никому не говорите, что муж душил, это плохо для репутации!”</h3>
+        <h3>“{post.title}”</h3>
         <div className="story__user-info">
           <div className="user-image">
             <svg
@@ -56,7 +71,7 @@ export const StoryExtended = () => {
             </svg>
           </div>
           <div>
-            <p className="user-name">Колдонуучу 2 </p>
+            <p className="user-name">{post.author.username} 2 </p>
             <div className="story-text-block">
               <p className="story-date">27.07.2023 </p>
               <span>
@@ -88,31 +103,9 @@ export const StoryExtended = () => {
           </div>
         </div>
 
-        <p className="story">
-          Маме все время не нравится, что мои дочки не умеют по хозяйству работать).. потом выйдут
-          замуж и как они будут хозяйство вести. Они отвечают, уже сейчас есть роботы делают все,
-          пока они вырастут, еще много чего появится.. но она все равно настаивает на
-          своем)Сестренка когда ее дочке было 1,5-2 года, а моей младшей 6 лет на ИК все время
-          заставляла за ее дочкой присматривать.., что вот вы должны помогать. Моя слушалась
-          слушалась, потом когда совсем не осталось времени на планшет в один день ответила - а
-          почему вы сами за своей дочкой не смотрите? вы же ее мама).. прикольно было видеть
-          маленькую девочку отстаивающую свое право на игру)Одна симпотичная девушка развелась чуть
-          пожив с мужем после свадьбы, долгое время скрывала, что развелась, чтобы не осуждали. Как
-          только начальник узнал, которому тогда было 68 лет с внуками - такой дедуля.. предложил
-          его &ldquo;радовать&ldquo;... ей было всего 24... она долго ходила в шоке не могла
-          оправится... она такая маленькая миниатюрная.. он такой большоой мужик... прям сказал, мне
-          нужна женская ласка, чтобы хорошо работать..Как-то подруга с универа начала говорить про
-          то как папы брат ругался с женой. Были дети уже как-бы состоявшаяся семья. Не помню из-за
-          чего поругались, но он побил ее. Я говорю и на чьей ты стороне, она ответила Она
-          заслужила.Один раз была в лицево-челюстной хирургии. моему отцу хотели сделать операцию.
-          Пока ждала в приемной, пришла женщина в кабинет дежурного врача. Горло было перевязанное.
-          Врач спросил как получилось, она ответила Муж душил. Врач сказал, будете заявлять? Она
-          колебалась. Тогда врач прям в спешке сказал, Никому не говорить, что муж душил, это плохо
-          репутации и т.п.. я была в шоке.. Женщина была симпотичная высокая лет 45. Жаль что такие
-          случаи скрываются.. Получается врач убедил ее не заявлять.
-        </p>
+        <p className="story">{post.text}</p>
       </div>
-      <Analysis />
+      <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
       <div className="comments__block">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="description">Сын-пикир калтыруу:</label>
@@ -140,7 +133,7 @@ export const StoryExtended = () => {
               <p className="text">Тилекке каршы коомчулукта эң көп кездешкен окуялар</p>
               <div className="analis">
                 <button>Жооп беруу</button>
-                <Analysis />
+                <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
               </div>
             </div>
           </li>

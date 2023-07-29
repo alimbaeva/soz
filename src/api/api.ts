@@ -64,6 +64,7 @@ export const api = {
       });
       if (response.status) {
         const data = await response.json();
+        console.log(data);
         return data;
       }
     } catch (err) {
@@ -82,6 +83,110 @@ export const api = {
       if (response.status) {
         const data = await response.json();
         console.log(data, response.status);
+        return data;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async getPost(id: number) {
+    try {
+      const response = await fetch(`${apiPath}${apiEndpoints.getPosts}${id}`, {
+        method: METHODS.get,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+      });
+      if (response.status) {
+        const data = await response.json();
+        console.log(data, response.status);
+        return data;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async setLike(id: number, tokenUser: string) {
+    try {
+      const response = await fetch(`${apiPath}${apiEndpoints.getPosts}${id}${apiEndpoints.like}`, {
+        method: METHODS.post,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Token ${tokenUser}`,
+        },
+      });
+      if (response.status) {
+        console.log(response.status);
+        return response.status;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async removeLike(id: number, tokenUser: string) {
+    try {
+      const response = await fetch(
+        `${apiPath}${apiEndpoints.getPosts}${id}${apiEndpoints.removeLike}`,
+        {
+          method: METHODS.post,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Token ${tokenUser}`,
+          },
+        }
+      );
+      if (response.status) {
+        console.log(response.status);
+        return response.status;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async getComments(id: number, tokenUser: string) {
+    try {
+      const response = await fetch(
+        `${apiPath}${apiEndpoints.getPosts}${id}${apiEndpoints.commentsCreate}`,
+        {
+          method: METHODS.post,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Token ${tokenUser}`,
+          },
+        }
+      );
+      if (response.status) {
+        console.log(response.status);
+        const data = await response.json();
+        console.log(data);
+        return data;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async commentsCreate(id: number, tokenUser: string, text: string) {
+    try {
+      const response = await fetch(
+        `${apiPath}${apiEndpoints.getPosts}${id}${apiEndpoints.commentsCreate}`,
+        {
+          method: METHODS.post,
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Token ${tokenUser}`,
+          },
+          body: JSON.stringify({ text: text }),
+        }
+      );
+      if (response.status) {
+        console.log(response.status);
+        const data = await response.json();
+        console.log(data);
         return data;
       }
     } catch (err) {

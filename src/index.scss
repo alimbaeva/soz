@@ -114,3 +114,9 @@ button:hover::after, button:hover::after{
   background-color: $black;
   color: $white;
 }
+
+@media (max-width: 1260px) {
+  .container {
+    width: 95%;
+  }
+}
