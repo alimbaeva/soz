@@ -107,4 +107,23 @@ export const api = {
       console.error(err);
     }
   },
+  async setLike(id: number, tokenUser: string) {
+    try {
+      const response = await fetch(`${apiPath}${apiEndpoints.getPosts}${id}${apiEndpoints.like}`, {
+        method: METHODS.get,
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Token ${tokenUser}`,
+        },
+      });
+      if (response.status) {
+        const data = await response.json();
+        console.log(data, response.status);
+        return data;
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };

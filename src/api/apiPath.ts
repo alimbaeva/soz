@@ -4,6 +4,7 @@ export const apiEndpoints = {
   login: 'auth/login/',
   siginUp: 'auth/signup/',
   getPosts: 'posts/',
+  like: '/like/',
 };
 
 export const enum METHODS {

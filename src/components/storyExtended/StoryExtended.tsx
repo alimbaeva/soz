@@ -98,7 +98,7 @@ export const StoryExtended = () => {
 
         <p className="story">{post.text}</p>
       </div>
-      <Analysis like={post.likes} dislike={0} countComments={0} />
+      <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
       <div className="comments__block">
         <form onSubmit={handleSubmit(onSubmit)}>
           <label htmlFor="description">Сын-пикир калтыруу:</label>
@@ -126,7 +126,7 @@ export const StoryExtended = () => {
               <p className="text">Тилекке каршы коомчулукта эң көп кездешкен окуялар</p>
               <div className="analis">
                 <button>Жооп беруу</button>
-                <Analysis like={post.likes} dislike={0} countComments={0} />
+                <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
               </div>
             </div>
           </li>

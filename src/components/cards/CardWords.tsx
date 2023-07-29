@@ -25,7 +25,7 @@ export const CardWords = () => {
           <p>Өркүнүң өскүр деген эмнени түшүндүрөт?</p>
           <div className="card_btns">
             <button>Жооп беруу</button>
-            <Analysis like={0} dislike={0} countComments={0} />
+            <Analysis id={0} like={0} dislike={0} countComments={0} />
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@ export const CardWords = () => {
           <p>Өркүнүң өскүр деген эмнени түшүндүрөт?</p>
           <div className="card_btns">
             <button>Жооп беруу</button>
-            <Analysis like={0} dislike={0} countComments={0} />
+            <Analysis id={0} like={0} dislike={0} countComments={0} />
           </div>
         </div>
       </div>
