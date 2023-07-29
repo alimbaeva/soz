@@ -64,7 +64,6 @@ export const api = {
       });
       if (response.status) {
         const data = await response.json();
-        console.log(data);
         return data;
       }
     } catch (err) {
@@ -100,7 +99,6 @@ export const api = {
       });
       if (response.status) {
         const data = await response.json();
-        console.log(data, response.status);
         return data;
       }
     } catch (err) {
@@ -118,7 +116,6 @@ export const api = {
         },
       });
       if (response.status) {
-        console.log(response.status);
         return response.status;
       }
     } catch (err) {
@@ -139,7 +136,6 @@ export const api = {
         }
       );
       if (response.status) {
-        console.log(response.status);
         return response.status;
       }
     } catch (err) {
@@ -159,9 +155,7 @@ export const api = {
         }
       );
       if (response.status) {
-        console.log(response.status);
         const data = await response.json();
-        console.log(data);
         return data;
       }
     } catch (err) {
@@ -183,31 +177,26 @@ export const api = {
         }
       );
       if (response.status) {
-        console.log(response.status);
         const data = await response.json();
-        console.log(data);
         return data;
       }
     } catch (err) {
       console.error(err);
     }
   },
-  async setPost(title: string, text: string, hashtag: string) {
+  async createPost(title: string, text: string, hashtag: string, tokenUser: string) {
     try {
       const response = await fetch(`${apiPath}${apiEndpoints.getPosts}`, {
         method: METHODS.post,
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
+          Authorization: `Token ${tokenUser}`,
         },
         body: JSON.stringify({ title: title, text: text, hashtag: hashtag }),
       });
       if (response.status) {
-        if (response.status == 201) {
-          console.log(response);
-        }
         const data = await response.json();
-        console.log(data);
         return data;
       }
     } catch (err) {

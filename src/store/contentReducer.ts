@@ -9,6 +9,7 @@ interface IContent {
   isLike: boolean;
   isDisLike: boolean;
   commentsCreate: boolean;
+  createPost: boolean;
 }
 
 const initialContent: IContent = {
@@ -28,6 +29,7 @@ const initialContent: IContent = {
   isLike: false,
   isDisLike: false,
   commentsCreate: false,
+  createPost: false,
 };
 
 export const GetPosts = createAsyncThunk('Content/GetPosts', async () => {
@@ -64,6 +66,24 @@ export const GetComments = createAsyncThunk(
   }
 );
 
+export const CreatePost = createAsyncThunk(
+  'Content/CreatePost',
+  async ({
+    title,
+    text,
+    hashtag,
+    tokenUser,
+  }: {
+    title: string;
+    text: string;
+    hashtag: string;
+    tokenUser: string;
+  }) => {
+    const data = await api.createPost(title, text, hashtag, tokenUser);
+    return data;
+  }
+);
+
 export const CommentsCreate = createAsyncThunk(
   'Content/CommentsCreate',
   async ({ id, tokenUser, text }: { id: number; tokenUser: string; text: string }) => {
@@ -96,12 +116,15 @@ export const ContentSlice = createSlice({
     builder.addCase(CommentsCreate.fulfilled, (state, action) => {
       if (action.payload === 200) {
         state.commentsCreate = true;
-        console.log('_---__');
       }
     });
     builder.addCase(GetComments.fulfilled, (state, action) => {
       state.commentsIsPosts = action.payload;
       console.log(action.payload);
+    });
+    builder.addCase(CreatePost.fulfilled, (state, action) => {
+      state.posts = [...state.posts, action.payload];
+      state.createPost = true;
     });
   },
 });

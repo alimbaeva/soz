@@ -3,6 +3,9 @@ import { FC, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import './postForm.scss';
+import { RootState, store } from '../../store';
+import { CreatePost } from '../../store/contentReducer';
+import { useSelector } from 'react-redux';
 
 type Inputs = {
   firstName: string;
@@ -10,6 +13,8 @@ type Inputs = {
 };
 
 export const PostForm: FC = () => {
+  const { userData } = useSelector((state: RootState) => state.AuthReducer);
+  const { createPost } = useSelector((state: RootState) => state.ContentReducer);
   const [activeRubric, setActiveRubric] = useState<string>('');
   const {
     register,
@@ -18,7 +23,15 @@ export const PostForm: FC = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(JSON.stringify(data));
+    console.log(data);
+    store.dispatch(
+      CreatePost({
+        title: data.firstName,
+        text: data.postText,
+        hashtag: activeRubric,
+        tokenUser: userData.token,
+      })
+    );
   };
 
   const handleClick = (rubric: string) => {
@@ -42,13 +55,9 @@ export const PostForm: FC = () => {
             placeholder="Аталышы"
             {...register('firstName', {
               required: true,
-              maxLength: {
-                value: 3,
-                message: 'Минимум 3 символов',
-              },
             })}
           />
-          <div>{errors.firstName && <p>{errors?.firstName.message || 'Error!'}</p>}</div>
+          <div>{errors.firstName && <p>Минимум 3 символов</p>}</div>
         </div>
         <div className="post-form__input-block">
           <label htmlFor="heading">
@@ -103,13 +112,9 @@ export const PostForm: FC = () => {
             placeholder="Текст..."
             {...register('postText', {
               required: true,
-              maxLength: {
-                value: 30,
-                message: 'Минимум 30 символов',
-              },
             })}
           />
-          <div>{errors.postText && <p>{errors?.postText.message || 'Error!'}</p>}</div>
+          <div>{errors.postText && <p>Минимум 30 символов</p>}</div>
         </div>
         <button className="post-form__sumbit-btn" type="submit">
           Жүктөө
