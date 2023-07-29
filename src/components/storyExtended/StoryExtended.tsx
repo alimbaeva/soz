@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Analysis } from '../../components/UI-kit/analysis/Analysis';
 import { RootState, store } from '../../store';
 import { useSelector } from 'react-redux';
 import { CommentsCreate, GetComments } from '../../store/contentReducer';
 import './storyExtended.scss';
+import { TPostComments } from '../../types/TypesComponents';
 
 type FormValues = {
   description: string;
 };
 
-export const StoryExtended = () => {
+export const StoryExtended: FC = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
-  const { post } = useSelector((state: RootState) => state.ContentReducer);
+  const { post, commentsIsPosts } = useSelector((state: RootState) => state.ContentReducer);
   const { userData } = useSelector((state: RootState) => state.AuthReducer);
 
   const {
@@ -26,7 +27,6 @@ export const StoryExtended = () => {
   }, []);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data); // Access form data when submitted
     if (userData.token) {
       store.dispatch(
         CommentsCreate({ id: post.id, tokenUser: userData.token, text: data.description })
@@ -120,23 +120,27 @@ export const StoryExtended = () => {
           </button>
         </form>
         <ul>
-          <li>
-            <div className="guest-image">
-              <p>AS</p>
-              {/* <img src="" alt="" /> */}
-            </div>
-            <div className="guest-info">
-              <div className="guest-name">
-                <p>Asel</p>
-                <span>40 мүнөт мурун</span>
-              </div>
-              <p className="text">Тилекке каршы коомчулукта эң көп кездешкен окуялар</p>
-              <div className="analis">
-                <button>Жооп беруу</button>
-                <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
-              </div>
-            </div>
-          </li>
+          {commentsIsPosts.map((el: TPostComments, id) => {
+            return (
+              <li key={id}>
+                <div className="guest-image">
+                  <p>AS</p>
+                  {/* <img src="" alt="" /> */}
+                </div>
+                <div className="guest-info">
+                  <div className="guest-name">
+                    <p>{el.author.username}</p>
+                    {/* <span>40 мүнөт мурун</span> */}
+                  </div>
+                  <p className="text">{el.text}</p>
+                  {/* <div className="analis">
+                    <button>Жооп беруу</button>
+                    <Analysis id={post.id} like={post.likes} dislike={0} countComments={0} />
+                  </div> */}
+                </div>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

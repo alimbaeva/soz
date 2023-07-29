@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
-import likeIcon from '../../../assets/icons/like.svg';
-import dislikeIcon from '../../../assets/icons/dislike.svg';
+import love from '../../../assets/icons/love.svg';
 import message from '../../../assets/icons/message.svg';
 import './analysis.scss';
 import { useSelector } from 'react-redux';
@@ -29,12 +28,8 @@ export const Analysis: FC<IAnalysis> = ({ id, like, dislike, countComments }: IA
   return (
     <div className="card__analysis">
       <div className="svg__like" onClick={handleLike}>
-        <img src={likeIcon} alt="rrr" />
+        <img src={love} alt="" />
         <span style={{ color: '#006D57' }}>{like}</span>
-      </div>
-      <div className="svg__dislike">
-        <img src={dislikeIcon} alt="" />
-        <span style={{ color: '#910505' }}>{dislike}</span>
       </div>
       <div className="svg__messege">
         <img src={message} alt="" />
