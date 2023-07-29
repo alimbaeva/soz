@@ -1,20 +1,40 @@
 @import '../../variables.scss';
 
 .help-form {
-    @extend %flexCenter;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 25rem;
-    height: 30rem;
-    background-color: aqua;
-    border-radius: 1rem;
+  padding: 20px;
 
-    label {
-        display: block;
-        margin-bottom: .8rem;
-        font-size: 1.7rem;
+  &__input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
 
-    }
+  &__input label {
+    @extend %titleCard;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  &__input input,
+  &__textarea  {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border-style: none;
+    width: 90%;
+  }
+
+  &__input input:focus,
+  &__textarea:focus {
+    outline: none;
+  }
+  
+  &__textarea {
+    resize: none;
+  }
+
+  &__button {
+    
+  }
+
 }

@@ -1,10 +1,13 @@
 import { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Inputs } from '../../types/TypesComponents';
+import { ModalWindow } from '../modalWindow/ModalWindow';
+import useModal from '../modalWindow/useModal';
 
 import './helpForm.scss';
 
 export const HelpForm: FC = () => {
+  const { modalActive, setActive } = useModal();
   const {
     register,
     formState: { errors },
@@ -16,11 +19,11 @@ export const HelpForm: FC = () => {
   };
 
   return (
-    <div className="help-form">
-      <form className="" onSubmit={handleSubmit(onSubmit)}>
-        <div className="">
+    <ModalWindow active={modalActive} setActive={setActive}>
+      <form className="help-form" onSubmit={handleSubmit(onSubmit)}>
+        <div className="help-form__input">
           <label htmlFor="text">
-            Теманыз<span>*</span>
+            Темаңыз<span>*</span>
           </label>
           <input
             type="text"
@@ -30,7 +33,7 @@ export const HelpForm: FC = () => {
           />
         </div>
         {errors.title?.type === 'required' && <p role="alert">*Сураныч, темаңызды жазыныз</p>}
-        <div className="">
+        <div className="help-form__input">
           <label htmlFor="text">
             Телефон<span>*</span>
           </label>
@@ -42,12 +45,12 @@ export const HelpForm: FC = () => {
           />
         </div>
         {errors.phone?.type === 'required' && <p role="alert">*Сураныч, телефонуңузду жазыңыз</p>}
-        <div className="">
+        <div className="help-form__input">
           <label htmlFor="text">
             Кат жазыңыз<span>*</span>
           </label>
           <textarea
-            className=""
+            className="help-form__textarea"
             id="text"
             placeholder="Текст..."
             {...register('text', {
@@ -56,8 +59,8 @@ export const HelpForm: FC = () => {
           />
           <div>{errors.text && <p>{errors?.text.message || 'Error!'}</p>}</div>
         </div>
-        <button>Жонотуу</button>
+        <button className="help-form__button">Жөнөтүү</button>
       </form>
-    </div>
+    </ModalWindow>
   );
 };
