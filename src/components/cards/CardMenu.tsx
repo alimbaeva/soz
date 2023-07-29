@@ -47,7 +47,7 @@ export const CardMenu: FC = () => {
             <div className="img-block">
               <img src={mesogyny} alt="" />
             </div>
-            <h3 className="cardMenu-item__title">Аялдарды жектөө</h3>
+            <h3 className="cardMenu-item__title">Мизогиния</h3>
             <p className="cardMenu-item__descr">Аялдарды жектөө сөздөрүн жок кылуу.</p>
             <div className="first-line-buttons">
               <button className="card-menu__button">Жаңы сөз кош</button>
@@ -90,7 +90,7 @@ export const CardMenu: FC = () => {
           </Link>
         </li>
         <li className="cardMenu-item">
-          <Link to="" className="cardMenu-item__inner">
+          <Link to="/question" className="cardMenu-item__inner">
             <img src="" alt="" />
             <h3 className="cardMenu-item__title">Сурамжылоо</h3>
             <p className="cardMenu-item__descr">
