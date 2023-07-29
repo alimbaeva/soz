@@ -32,13 +32,10 @@ export interface TPosts {
 }
 
 export interface TPostComments {
+  author: { username: string };
   id: number;
-  author: {
-    username: string;
-  };
-  title: string;
-  text: string;
-  hashtag: string;
   likes: number;
+  post: number;
+  text: string;
   user_liked: boolean;
 }

@@ -149,13 +149,12 @@ export const api = {
   async getComments(id: number, tokenUser: string) {
     try {
       const response = await fetch(
-        `${apiPath}${apiEndpoints.getPosts}${id}${apiEndpoints.commentsCreate}`,
+        `${apiPath}${apiEndpoints.getPosts}${id}${apiEndpoints.comments}`,
         {
-          method: METHODS.post,
+          method: METHODS.get,
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            Authorization: `Token ${tokenUser}`,
           },
         }
       );
