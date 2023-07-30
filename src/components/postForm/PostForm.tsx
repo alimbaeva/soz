@@ -51,10 +51,10 @@ export const PostForm: FC = () => {
     if (createPost) {
       setActive();
       setTimeout(() => {
-        setActive();
+        // setActive();
         navigate('/');
         dispatch(setShow(false));
-      }, 300);
+      }, 990);
     }
   }, [createPost]);
 

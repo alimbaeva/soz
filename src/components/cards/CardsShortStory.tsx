@@ -55,7 +55,9 @@ export const CardsShortStory: FC<TPost> = (post: TPost) => {
     >
       <div className="card__body">
         <h4>{post.post.title}</h4>
-        <p>{post.post.text}</p>
+        <p>
+          {post.post.text.length > 280 ? post.post.text.substring(0, 280) + '...' : post.post.text}
+        </p>
         <section>
           <Analysis id={post.post.id} like={post.post.likes} dislike={0} countComments={0} />
         </section>

@@ -6,6 +6,7 @@ import msg2 from '../../../assets/icons/msg2.svg';
 import './storyBockBtn.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store';
+import { Link } from 'react-router-dom';
 
 export const StoryBockBtn: FC = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
@@ -13,7 +14,9 @@ export const StoryBockBtn: FC = () => {
   return (
     <div className="set__story">
       <div className="button">
-        <button className={themes ? 'btn_Bl_border' : 'btn_Li_border'}>Жаңы окуя кош</button>
+        <Link to="/postPublish">
+          <button className={themes ? 'btn_Bl_border' : 'btn_Li_border'}>Жаңы окуя кош</button>
+        </Link>
       </div>
       <img className="starYello" src={starYello} alt="" />
       <img className="starBlue" src={starBlue} alt="" />

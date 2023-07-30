@@ -12,7 +12,7 @@ export const Misogyny = () => {
       <h1>Мизогиния</h1>
       <CardWords />
       <button className={themes ? 'button btn_Bl_border' : 'button btn_Li_border'}>
-        Кийинки сөздөр
+        Жаңы сөз кош
       </button>
     </section>
   );
