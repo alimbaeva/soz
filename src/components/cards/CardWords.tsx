@@ -22,7 +22,7 @@ export const CardWords = () => {
           <div>
             <h5>Ордуңду бил. Сени кыз деп коет!</h5> <span>40 мүнөт мурун</span>
           </div>
-          <p>Сен көп ийгиөиктерди багындырып аласың!</p>
+          <p>Сен көп ийгиликтерди багындырып аласың!</p>
           <div className="card_btns">
             <button>Жооп беруу</button>
             <Analysis id={0} like={0} dislike={0} countComments={0} />
