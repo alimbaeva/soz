@@ -19,7 +19,6 @@ export const Analysis: FC<IAnalysis> = ({ id, like, dislike, countComments }: IA
 
   const handleLike = () => {
     if (userData.token) {
-      console.log(isLike);
       if (!isLike) store.dispatch(SetLike({ id, tokenUser: userData.token }));
       if (isLike) store.dispatch(RemoveLike({ id, tokenUser: userData.token }));
     }

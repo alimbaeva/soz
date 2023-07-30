@@ -14,9 +14,11 @@ interface IInitialAuth {
 const initialAuth: IInitialAuth = {
   userData: {
     username: '',
-    token: '',
+    token: localStorage.getItem('tokenSoz') ? (localStorage.getItem('tokenSoz') as string) : '',
   },
-  isAuth: false,
+  isAuth: localStorage.getItem('tokenSoz')
+    ? JSON.parse(localStorage.getItem('tokenSoz') as string)
+    : false,
   isRegister: false,
 };
 
@@ -26,7 +28,6 @@ export const SiginUp = createAsyncThunk('Auth/SiginUp', async (from: ISiginUp) =
 });
 
 export const Login = createAsyncThunk('Auth/Login', async (from: ISiginIn) => {
-  console.log(from);
   const data = await api.login(from);
   return data;
 });
@@ -52,8 +53,8 @@ export const AuthSlice = createSlice({
     builder.addCase(Login.fulfilled, (state, action) => {
       state.isAuth = true;
       localStorage.setItem('isAuth', JSON.stringify(true));
+      localStorage.setItem('tokenSoz', JSON.stringify(action.payload.token));
       state.userData = action.payload;
-      console.log(action.payload);
     });
   },
 });

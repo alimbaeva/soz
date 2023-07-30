@@ -57,7 +57,6 @@ export const Auth: FC = () => {
       };
       setFormValue(dataUser);
 
-      console.log(dataUser);
       store.dispatch(Login(dataUser));
     }
   };

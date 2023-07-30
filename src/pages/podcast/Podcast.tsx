@@ -4,6 +4,9 @@ import './podcast.scss';
 import { randomNumber } from '../../utils/randomNumber';
 import { AudioPlayer } from '../../components/player/AudioPlayer';
 import sound1 from '../../assets/podcast/sound1.mp3';
+import sound2 from '../../assets/podcast/Критерии обидчика.mp3';
+import sound3 from '../../assets/podcast/2. Жизнь без насилия.mp3';
+import sound4 from '../../assets/podcast/sound4.mp3';
 import fone1 from '../../assets/images/fone1.png';
 import fone2 from '../../assets/images/fone2.png';
 import fone3 from '../../assets/images/fone3.png';
@@ -19,15 +22,15 @@ const sound = [
   },
   {
     title: '"Мээрим тилин" кантип өнүктүрөбүз?',
-    url: sound1,
+    url: sound2,
   },
   {
     title: 'Кастык тилине жол жок! Өзүңдүн чегиңди сактаганды үйрөн!',
-    url: sound1,
+    url: sound3,
   },
   {
     title: 'Коомчулуктагы "стреотипттер".',
-    url: sound1,
+    url: sound4,
   },
 ];
 
@@ -92,7 +95,7 @@ export const Podcast = () => {
                   <p>Создун кучу</p>
                   <h5>{el.title}</h5>
                 </div>
-                <AudioPlayer audioSrc={sound1} />
+                <AudioPlayer audioSrc={el.url} />
               </div>
             </div>
           );

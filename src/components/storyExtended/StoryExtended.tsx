@@ -2,10 +2,13 @@ import React, { FC, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Analysis } from '../../components/UI-kit/analysis/Analysis';
 import { RootState, store } from '../../store';
-import { useSelector } from 'react-redux';
-import { CommentsCreate, GetComments } from '../../store/contentReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { CommentsCreate, GetComments, setcommentsCreate } from '../../store/contentReducer';
 import './storyExtended.scss';
 import { TPostComments } from '../../types/TypesComponents';
+import { ModalWindow } from '../modalWindow/ModalWindow';
+import useModal from '../modalWindow/useModal';
+import { useNavigate } from 'react-router-dom';
 
 type FormValues = {
   description: string;
@@ -13,8 +16,11 @@ type FormValues = {
 
 export const StoryExtended: FC = () => {
   const { themes } = useSelector((state: RootState) => state.ThemesReducer);
-  const { post, commentsIsPosts } = useSelector((state: RootState) => state.ContentReducer);
+  const { post, commentsIsPosts, commentsCreate } = useSelector(
+    (state: RootState) => state.ContentReducer
+  );
   const { userData } = useSelector((state: RootState) => state.AuthReducer);
+  const { modalActive, setActive } = useModal();
 
   const {
     register,
@@ -22,9 +28,11 @@ export const StoryExtended: FC = () => {
     formState: { errors },
   } = useForm<FormValues>();
 
-  useEffect(() => {
-    store.dispatch(GetComments({ id: post.id, tokenUser: userData.token }));
-  }, []);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   store.dispatch(GetComments({ id: post.id, tokenUser: userData.token }));
+  // }, []);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     if (userData.token) {
@@ -34,8 +42,22 @@ export const StoryExtended: FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (commentsCreate) {
+      setActive();
+      setTimeout(() => {
+        setActive();
+        navigate('/trueStory');
+        dispatch(setcommentsCreate(false));
+      }, 400);
+    }
+  }, [commentsCreate]);
+
   return (
     <div>
+      <ModalWindow active={modalActive} setActive={setActive}>
+        <p>Сиздин Сын-пикириниз жарыяланды. Рахмат.</p>
+      </ModalWindow>
       <div className="story__blok">
         <h3>“{post.title}”</h3>
         <div className="story__user-info">

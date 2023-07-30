@@ -8,11 +8,13 @@ import { ModalWindow } from '../modalWindow/ModalWindow';
 
 import collective_group_help from '../../assets/icons/collective_group_help.svg';
 import call_center from '../../assets/icons/call_center.svg';
-import { SetHelp } from '../../store/helperFormReducer';
+import { SetHelp, setShow } from '../../store/helperFormReducer';
 import { RootState, store } from '../../store';
 import { useSelector } from 'react-redux';
 
 import './helperButton.scss';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const images = [collective_group_help, call_center];
 
@@ -21,6 +23,10 @@ export const HelperButton = () => {
   const [image, setImage] = useState(0);
   // const dispatch = useDispatch();
   const { modalActive, setActive } = useModal();
+  const { modalActive: sucsessHelp, setActive: setSucsessHelp } = useModal();
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -49,8 +55,22 @@ export const HelperButton = () => {
     setActive();
   };
 
+  useEffect(() => {
+    if (sacsess) {
+      setSucsessHelp();
+      setTimeout(() => {
+        setSucsessHelp();
+        dispatch(setShow(false));
+        // navigate('/');
+      }, 300);
+    }
+  }, [sacsess]);
+
   return (
     <>
+      <ModalWindow active={sucsessHelp} setActive={setSucsessHelp}>
+        <p>Сиздин катыныз жети. Жакын арада сизге специалистер чалат.</p>
+      </ModalWindow>
       <ModalWindow active={modalActive} setActive={setActive}>
         <form className="help-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="help-form__input">

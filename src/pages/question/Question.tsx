@@ -20,19 +20,34 @@ export const Question: FC = () => {
         >
           Биринчи сурамжылоо <img src={arrowIcon} alt="" />
         </Link>
-        <Link to="/" className="question__list-item">
+        <Link
+          to="https://quizizz.com/admin/quiz/64c4960fa69d02000809b89e?source=quiz_share"
+          className="question__list-item"
+        >
           Экинчи сурамжылоо <img src={arrowIcon} alt="" />
         </Link>
-        <Link to="/" className="question__list-item">
+        <Link
+          to="https://quizizz.com/admin/quiz/64c4960fa69d02000809b89e?source=quiz_share"
+          className="question__list-item"
+        >
           Үчүнчү сурамжылоо <img src={arrowIcon} alt="" />
         </Link>
-        <Link to="/" className="question__list-item">
+        <Link
+          to="https://quizizz.com/admin/quiz/64c4960fa69d02000809b89e?source=quiz_share"
+          className="question__list-item"
+        >
           Төртүнчү сурамжылоо <img src={arrowIcon} alt="" />
         </Link>
-        <Link to="/" className="question__list-item">
+        <Link
+          to="https://quizizz.com/admin/quiz/64c4960fa69d02000809b89e?source=quiz_share"
+          className="question__list-item"
+        >
           Бешинчи сурамжылоо <img src={arrowIcon} alt="" />
         </Link>
-        <Link to="/" className="question__list-item">
+        <Link
+          to="https://quizizz.com/admin/quiz/64c4960fa69d02000809b89e?source=quiz_share"
+          className="question__list-item"
+        >
           Алтынчы сурамжылоо <img src={arrowIcon} alt="" />
         </Link>
       </div>

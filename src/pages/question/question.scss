@@ -19,13 +19,14 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     gap: 22px;
   }
 
   &__list-item {
     font-size: 1.2rem;
     color: $white;
-    width: 357px;
+    width: 307px;
     display: flex;
     align-items: center;
     justify-content: space-between;

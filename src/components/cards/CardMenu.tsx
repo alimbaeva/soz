@@ -1,13 +1,24 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import storyShare from '../../assets/images/share-img.png';
 import mesogyny from '../../assets/images/mesogeny-img.png';
 import searching from '../../assets/images/Searching - Looking.png';
 
+import { useSelector } from 'react-redux';
+import { RootState, store } from '../../store';
+import { GetComments } from '../../store/contentReducer';
+
 import './CardMenu.scss';
 
 export const CardMenu: FC = () => {
+  const { post, commentsIsPosts } = useSelector((state: RootState) => state.ContentReducer);
+  const { userData } = useSelector((state: RootState) => state.AuthReducer);
+
+  useEffect(() => {
+    store.dispatch(GetComments({ id: post.id, tokenUser: userData.token }));
+  }, []);
+
   return (
     <>
       <ul className="cardMenu container">

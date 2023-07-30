@@ -95,7 +95,11 @@ export const CommentsCreate = createAsyncThunk(
 export const ContentSlice = createSlice({
   name: 'Content',
   initialState: initialContent,
-  reducers: {},
+  reducers: {
+    setcommentsCreate: (state, action) => {
+      state.commentsCreate = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(GetPosts.fulfilled, (state, action) => {
       state.posts = action.payload;
@@ -114,13 +118,10 @@ export const ContentSlice = createSlice({
       }
     });
     builder.addCase(CommentsCreate.fulfilled, (state, action) => {
-      if (action.payload === 200) {
-        state.commentsCreate = true;
-      }
+      state.commentsCreate = true;
     });
     builder.addCase(GetComments.fulfilled, (state, action) => {
       state.commentsIsPosts = action.payload;
-      console.log(action.payload);
     });
     builder.addCase(CreatePost.fulfilled, (state, action) => {
       state.posts = [...state.posts, action.payload];
@@ -131,6 +132,6 @@ export const ContentSlice = createSlice({
 
 const { actions, reducer: ContentReducer } = ContentSlice;
 
-// export const {} = actions;
+export const { setcommentsCreate } = actions;
 
 export default ContentReducer;

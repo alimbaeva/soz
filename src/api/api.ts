@@ -81,7 +81,6 @@ export const api = {
       });
       if (response.status) {
         const data = await response.json();
-        console.log(data, response.status);
         return data;
       }
     } catch (err) {
@@ -176,7 +175,7 @@ export const api = {
           body: JSON.stringify({ text: text }),
         }
       );
-      if (response.status) {
+      if (response.status === 201) {
         const data = await response.json();
         return data;
       }

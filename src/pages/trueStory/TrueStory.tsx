@@ -21,7 +21,6 @@ export const TrueStory: FC = () => {
 
   useEffect(() => {
     setData(posts);
-    console.log(posts);
   }, [posts]);
 
   return (

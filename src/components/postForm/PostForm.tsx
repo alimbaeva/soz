@@ -1,11 +1,15 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import './postForm.scss';
 import { RootState, store } from '../../store';
 import { CreatePost } from '../../store/contentReducer';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ModalWindow } from '../modalWindow/ModalWindow';
+import useModal from '../modalWindow/useModal';
+import { useNavigate } from 'react-router-dom';
+import { setShow } from '../../store/helperFormReducer';
 
 type Inputs = {
   firstName: string;
@@ -16,14 +20,17 @@ export const PostForm: FC = () => {
   const { userData } = useSelector((state: RootState) => state.AuthReducer);
   const { createPost } = useSelector((state: RootState) => state.ContentReducer);
   const [activeRubric, setActiveRubric] = useState<string>('');
+  const { modalActive, setActive } = useModal();
   const {
     register,
     formState: { errors },
     handleSubmit,
   } = useForm<Inputs>();
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data);
     store.dispatch(
       CreatePost({
         title: data.firstName,
@@ -40,8 +47,22 @@ export const PostForm: FC = () => {
 
   const isButtonActive = (rubric: string) => rubric === activeRubric;
 
+  useEffect(() => {
+    if (createPost) {
+      setActive();
+      setTimeout(() => {
+        setActive();
+        navigate('/');
+        dispatch(setShow(false));
+      }, 300);
+    }
+  }, [createPost]);
+
   return (
     <>
+      <ModalWindow active={modalActive} setActive={setActive}>
+        <p>Сиздин постунуз жарыяланды. Рахмат болушконунузго.</p>
+      </ModalWindow>
       <form className="post-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="post-form__input-block">
           <label htmlFor="firstName">
