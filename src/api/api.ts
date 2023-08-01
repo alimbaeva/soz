@@ -35,9 +35,11 @@ import { apiPath, apiEndpoints, METHODS } from './apiPath';
 // }
 
 export const api = {
+  // граматическая ошибка, правильно signUp
   async siginUp(form: ISiginUp) {
     try {
-      const response = await fetch(`${apiPath}${apiEndpoints.siginUp}`, {
+      
+      const response = await fetch(`${apiPath}${apiEndpoints.siginUp}`, { // apiPath тоже каждый раз повторяется
         method: METHODS.post,
         // везде этот headers повторяется создавая шум, можно было бы сделать
         // на fetch чтобы она по умолчанию отправляла JSON (либо использовать axios)
