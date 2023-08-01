@@ -18,6 +18,7 @@ export const PostForm: FC = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    // используйте дебаггер, не надо так делать
     console.log(JSON.stringify(data));
   };
 
@@ -55,6 +56,8 @@ export const PostForm: FC = () => {
             Рубриканы тандоо<span>*</span>
           </label>
           <div className="heading-buttons">
+
+            {/* нельзя ли просто button использовать? */}
             <input
               type="button"
               value="#сөздүнкүчү"
@@ -103,8 +106,10 @@ export const PostForm: FC = () => {
             placeholder="Текст..."
             {...register('postText', {
               required: true,
+              // ограничение на максимум
               maxLength: {
                 value: 30,
+                // а тут минимум ???
                 message: 'Минимум 30 символов',
               },
             })}
