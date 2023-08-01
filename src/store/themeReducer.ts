@@ -5,6 +5,7 @@ interface IInitialThemes {
 }
 
 const initialThemes: IInitialThemes = {
+  // Всмысле если нету themes тру делаем? Зачем?
   themes: localStorage.getItem('themes') ? JSON.parse(`${localStorage.getItem('themes')}`) : true,
 };
 
