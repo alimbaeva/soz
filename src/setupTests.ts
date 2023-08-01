@@ -2,4 +2,7 @@
 // allows you to do things like:
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
+
+// бесполезный файл, нужно удалить
+
 import '@testing-library/jest-dom';

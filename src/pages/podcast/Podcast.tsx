@@ -11,7 +11,12 @@ import fone4 from '../../assets/images/fone4.png';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../store';
 
+
+// COLORS и какие эти цвета не понятно (написали бы {green: '#EFFF9F', red: '...'})
 const collors = ['#EFFF9F', '#FFD36F', '#AF9FFF', '#589EF4', '#FD97E9'];
+
+// Вообще у программистов принято константы писать в верхнем регистре SOUND
+// cписки должны быть во множественном числе SOUNDS
 const sound = [
   {
     title: 'Мизогиния деген эмне?',
@@ -31,6 +36,7 @@ const sound = [
   },
 ];
 
+// Date с английского это число (типа 2023.07.07) правильно будет FAKE_DATA
 const fakeDate = [
   {
     id: 'WSqc_awFoik',
@@ -54,6 +60,9 @@ const fakeDate = [
   },
 ];
 
+// fone?? Если вы имели фон, то на английском пишется background
+// либо если хочется коротко то bg1, bg2 ... Так другие фронтенд разработчики поймут
+// и почему i?? backgrounds
 const i = [fone1, fone2, fone3, fone4];
 
 export const Podcast = () => {
@@ -66,8 +75,10 @@ export const Podcast = () => {
         {fakeDate.map((el, id) => {
           const num = randomNumber(collors.length - 1);
           return (
+            // что за раздражающее __ зачем два раза подряд писать youtube
             <div key={id} className="youtube__parant-block">
               <div className="youtube__block" style={{ borderColor: `${collors[num]}` }}>
+                {/* YoutubeFrame */}
                 <RenderYoutube idVideo={el.id} />
               </div>
               <h2>{el.title}</h2>

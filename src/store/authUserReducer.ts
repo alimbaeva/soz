@@ -20,6 +20,12 @@ const initialAuth: IInitialAuth = {
   isRegister: false,
 };
 
+// Все что внизу - церемониальный и бесполезный код
+// Просто поставьте в localStorage токен
+// Если токен есть? - Значит авторизован
+// Если нет? - то не авторизован
+// Вы и так в конце в локалсторедж положили зачем такой баласт кода?
+
 export const SiginUp = createAsyncThunk('Auth/SiginUp', async (from: ISiginUp) => {
   const data = await api.siginUp(from);
   return data;

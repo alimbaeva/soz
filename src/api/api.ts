@@ -1,6 +1,8 @@
 import { ISiginIn, ISiginUp } from '../types/TypesComponents';
 import { apiPath, apiEndpoints, METHODS } from './apiPath';
 
+
+// Почему не удалили? Не надо держать комментированный код, если нужно будет всегда можно из git найти
 // const defaultHeaders = (headers: object) => {
 //   return {
 //     Accept: 'application/json',
@@ -33,16 +35,22 @@ import { apiPath, apiEndpoints, METHODS } from './apiPath';
 // }
 
 export const api = {
+  // граматическая ошибка, правильно signUp
   async siginUp(form: ISiginUp) {
     try {
-      const response = await fetch(`${apiPath}${apiEndpoints.siginUp}`, {
+      
+      const response = await fetch(`${apiPath}${apiEndpoints.siginUp}`, { // apiPath тоже каждый раз повторяется
         method: METHODS.post,
+        // везде этот headers повторяется создавая шум, можно было бы сделать
+        // на fetch чтобы она по умолчанию отправляла JSON (либо использовать axios)
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(form),
       });
+
+      // бесполезные проверки. Можно было сразу return response.status
       if (response.status === 201) {
         return response.status;
       } else if (response.status === 204) {
@@ -56,6 +64,10 @@ export const api = {
     try {
       const response = await fetch(`${apiPath}${apiEndpoints.login}`, {
         method: METHODS.post,
+        // Тут тоже самое что и в предыдущем
+        // Каждая функция (siginUp, login, getPosts и т.д.)
+        // cодержит один и тот же повторяемый код и занимает около 13-14 строк
+        // вместо 3-4
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',

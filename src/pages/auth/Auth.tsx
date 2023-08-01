@@ -14,21 +14,29 @@ import PasswordIcon from '../../assets/icons/password-icon.svg';
 
 import './auth.scss';
 
+// безполезный FC. Поставьте strict false в tsconfig
 export const Auth: FC = () => {
   const { isRegister, isAuth } = useSelector((state: RootState) => state.AuthReducer);
-
+  // может быть showRegisterModal? 
   const [showRegister, setShowRegister] = useState(false);
   const { modalActive, setActive } = useModal();
+
+  // лучше бы просто назвать signUpForm 
+  // в api signUp, а в других местах Register и это плохо
+  // лучше везде иметь либо signUp либо Register а не в перемешку
   const [formValueRegister, setFormValueRegister] = useState({
     username: '',
     password1: '',
     password2: '',
   });
+
+  // лучше loginForm
   const [formValue, setFormValue] = useState({
     username: '',
     password: '',
   });
 
+  // лучше поставить в самый вверх, чтобы не мешало читать
   const navigate = useNavigate();
 
   const {
@@ -39,12 +47,21 @@ export const Auth: FC = () => {
 
   const onSubmit: SubmitHandler<ISiginUp> = (data) => {
     if (showRegister) {
+
+      // всмысле dataUser??? 
+      // почему не signupFields?
+      // никогда не используйте data в переменных
       const dataUser = {
         username: data.username,
         password1: data.password1,
         password2: data.password2,
       };
+
+      // Подставьте себя вместо другого и попробуйте прочитать. Нормально?
       setFormValueRegister(dataUser);
+      // Лучше было бы
+      // setSignupForm(signupFields);
+      
       setFormValue({
         username: data.username,
         password: data.password1,
@@ -65,18 +82,21 @@ export const Auth: FC = () => {
   useEffect(() => {
     if (isRegister) {
       store.dispatch(Login(formValue));
+      // setActive что? Что активировать?
       setActive();
     }
   }, [isRegister]);
 
   useEffect(() => {
     if (isAuth) {
+      // здесь нужно бы оставить комментарий зачем setTimeout
       setTimeout(() => navigate('/'), 2000);
     }
   }, [isAuth]);
 
   return (
     <section className="auth">
+      
       <ModalWindow active={modalActive} setActive={setActive}>
         <div className="success-title-block">
           <h2 className="success-text success-title">Ийгиликтүү катталдыңыз! </h2>

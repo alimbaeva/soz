@@ -30,6 +30,9 @@ const initialContent: IContent = {
   commentsCreate: false,
 };
 
+// еще больше повторного и грязного ненужного кода
+// Я так понимаю вы просто хотите в глобальный стейт хранить данные?
+// погуглите tanstack query там вы найдете как правильно это делать
 export const GetPosts = createAsyncThunk('Content/GetPosts', async () => {
   const data = await api.getPosts();
   return data;
